@@ -1,0 +1,19 @@
+Part : <./Data/ships/terran/armor_wedge/armor_wedge.rules>/Part
+{
+	ID = stafa.duranium_armor_wedge
+	OtherIDs = []
+	EditorGroup = "Starfleet"
+	//IsBuildable = false
+	MaxHealth = 6000
+	InitialPenetrationResistance = 15
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 1500
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.3
+		}
+	}
+}

@@ -31,9 +31,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		//[default, [-3, 5, 1, 1]]	// single block
 		//[default, [3, 2, 1, 1]]		// single block
 		//[default, [3, 5, 1, 1]]		// single block
-		[default, [3, 7, 1, 4]]		// bottom right
-		[default, [-3, 7, 1, 4]]	// bottom left
-		[default, [-2, 11, 5, 1]]	// bottom
+		[default, [2, 7, 1, 4]]		// bottom right
+		[default, [-2, 7, 1, 4]]	// bottom left
+		[default, [-1, 11, 3, 1]]	// bottom
 	]
 	ThrusterForce = 12000
 	ThrustIncreaseTime = 4

@@ -167,7 +167,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			ToStorage = BatteryStorage
-			ToQuantity = 250
+			ToQuantity = 275
 			Interval = .05
 		}
 		ConvertEffects
@@ -220,11 +220,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceConverter
 			FromStorage = BatteryStorage
-			FromQuantity = 350
+			FromQuantity = 500
 			ToStorage = CombinedBatteryStorage
-			ToQuantity = 350
+			ToQuantity = 500
 			Interval = 0.1
-			MinFromQuantityForConversion = 351
+			MinFromQuantityForConversion = 501
 		}
 		
 		

@@ -29,4 +29,10 @@ Parts
 	&<misc/ai_airlock/ai_airlock_d.rules>/Part
 	&<misc/ai_airlock/ai_airlock_t.rules>/Part
 	&<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6_special.rules>/Part
+	&<misc/ai_armor/duranium_armor.rules>/Part
+	&<misc/ai_armor/duranium_armor_tri.rules>/Part
+	&<misc/ai_armor/duranium_armor_wedge.rules>/Part
+	&<misc/ai_armor/duranium_armor1x2_wedge.rules>/Part
+	&<misc/ai_armor/duranium_armor1x3_wedge.rules>/Part
+	&<misc/ai_armor/duranium_armor2x1.rules>/Part
 ]

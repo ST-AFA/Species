@@ -5,7 +5,7 @@ IdealRange
 	{ BaseValue=20; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=20; }
 	{ BaseValue=165; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=210; }
 ]
-Duration = .5
+Duration = 1
 HitInterval = .1
 
 ClipRangeToTarget = true
