@@ -1,0 +1,19 @@
+Part : <./Data/ships/terran/armor_2x1/armor_2x1.rules>/Part
+{
+	ID = stafa.tritanium_armor2x1
+	OtherIDs = []
+	EditorGroup = "Starfleet"
+	//IsBuildable = false
+	MaxHealth = 40000
+	InitialPenetrationResistance = 35
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 10000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
+		}
+	}
+}

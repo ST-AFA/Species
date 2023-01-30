@@ -1,0 +1,19 @@
+Part : <./Data/ships/terran/armor_1x3_wedge/armor_1x3_wedge.rules>/Part
+{
+	ID = stafa.tritanium_armor1x3_wedge
+	OtherIDs = []
+	EditorGroup = "Starfleet"
+	//IsBuildable = false
+	MaxHealth = 30000
+	InitialPenetrationResistance = 15
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 7500
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
+		}
+	}
+}

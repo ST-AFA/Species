@@ -1,0 +1,19 @@
+Part : <./Data/ships/terran/armor_tri/armor_tri.rules>/Part
+{
+	ID = stafa.tritanium_armor_tri
+	OtherIDs = []
+	EditorGroup = "Starfleet"
+	//IsBuildable = false
+	MaxHealth = 5000
+	InitialPenetrationResistance = 15
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 1250
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
+		}
+	}
+}
