@@ -11,6 +11,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[coil2, 30]
 		[coil2, 6]
 	]
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5	
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, Phaser]
 	Size = [1, 5]
