@@ -70,7 +70,7 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 1.6]
+			Size = [100%, 0.8]
 			_extraBeginLength = (&Size/1) / 2
 			_extraEndLength = (&Size/1) / 2
 			VertexColor = [255, 255, 0, 255]

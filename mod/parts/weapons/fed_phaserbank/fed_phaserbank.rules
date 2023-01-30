@@ -15,7 +15,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewCongestedSpeedFactor = .5	
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, Phaser]
-	Size = [1, 5]
+	Size = [1, 6]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 5000
@@ -110,7 +110,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [0.5, 2.5]
+			Location = [0.5, 3]
 			OperationalToggle = IsOperational
 			Floor
 			{
@@ -119,15 +119,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "floor.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "floor_33.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "floor_66.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 				]
 			}
@@ -138,7 +138,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//	[
 			//		{
 			//			File = "lights.png"
-			//			Size = [1, 5]
+			//			Size = [1, 6]
 			//		}
 			//	]
 			//}
@@ -151,15 +151,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "walls_33.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "walls_66.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 				]
 			}
@@ -172,17 +172,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "roof.png"
 						NormalsFile = "roof_normals.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "roof_33.png"
 						NormalsFile = "roof_normals_33.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 					{
 						File = "roof_66.png"
 						NormalsFile = "roof_normals_66.png"
-						Size = [1, 5]
+						Size = [1, 6]
 					}
 				]
 			}
@@ -191,7 +191,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [.5, 1]
+			Location = [.5, 3]
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -326,13 +326,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
-			Location = [.5, 2.5]
+			Location = [.5, 3]
 		}
 
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [.5, 2.5]
+			Location = [.5, 3]
 			Layer = "indicators"
 			Indicators
 			[
@@ -364,7 +364,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
-			Size = [1, 5]
+			Size = [1, 6]
 		}
 	}
 

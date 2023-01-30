@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/Phaser_Pointdefense_Icon"
 	ID = "stafa.phaser_point_defense"
 	OtherIDs = [phaser_point_defense]
-	EditorGroups = ["WeaponsEnergy", "Defenses", "Starfleet"]
+	EditorGroups = ["Starfleet"]
 	DescriptionKey = "Parts/Phaser_Pointdefense_Desc"
 	Resources
 	[

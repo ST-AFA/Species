@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Phaser_Cannon_Deck"
 	IconNameKey = "Parts/Phaser_Cannon_Deck_Icon"
 	ID = "stafa.Phaser_Cannon_Deck"
-	EditorGroups = ["WeaponsEnergy", "Starfleet"]
+	EditorGroups = ["Starfleet"]
 	DescriptionKey = "Parts/Phaser_Cannon_Deck_Desc"
 	Resources
 	[

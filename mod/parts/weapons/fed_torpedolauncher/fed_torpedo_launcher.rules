@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/Torpedolauncher_Icon"
 	ID = "stafa.torpedolauncher_2x4"
 	OtherIDs = [torpedo_launcher]
-	EditorGroups = ["WeaponsProjectile", "Starfleet"]
+	EditorGroups = ["Starfleet"]
 	DescriptionKey = "Parts/Torpedolauncher_Desc"
 	Resources
 	[
