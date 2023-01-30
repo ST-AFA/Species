@@ -1,0 +1,348 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Captains_Room"
+	IconNameKey = "Parts/Captains_Room_Icon"
+	JobsIcon = &<./Data/gui/game/crew/crew_gui.rules>/ToolIcon
+	ID = "stafa.fed_captains_room"
+	OtherIDs = [CaptainsRoom]
+	EditorGroups = ["Crew", "Starfleet"]
+	DescriptionKey = "Parts/Captains_Room_Desc"
+	Resources
+	[
+		[steel, 92]
+		[tristeel, 2]
+	]
+	Size = [3, 3]
+	SelectionTypeID = "quarters"
+	MaxHealth = 9000
+	TypeCategories = [command, is_crewed, uses_power, readyroom]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
+	CrewSpeedFactor = .70
+	AllowedDoorLocations
+	[
+		[1,-1]
+		[-1,0]
+		[3,0]
+
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 1
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [BuffProvider1,BuffProvider2]
+				ComponentID = BatteryStorage
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = CombinedBatteryStorage
+			DefaultPriority = &/PRIORITIES/CaptainsRoom_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			MinFromQuantityForConversion = 1
+			Interval = 1 // Drains 1 power every 30 seconds.
+		}
+
+		BuffProvider1
+		{
+			Type = GridBuffProvider
+			BuffType = CaptainsRoomBuff
+			BuffAmount = 100%
+			GridDistance = 100
+			OperationalToggle = PowerToggle
+		}
+
+		BuffProvider2
+		{
+			Type = GridBuffProvider
+			BuffType = Engine
+			BuffAmount = 30%
+			GridDistance = 100
+			OperationalToggle = PowerToggle
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [1.95, 2.1]
+		}
+
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/CaptainsRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.2
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+		}
+
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			GetColorFrom = CrewSource
+			Floor
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "sheets.png"
+						Size = [3, 3]
+					}
+					{
+						File = "sheets_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "sheets_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.95, 2.7]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "battery1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "battery2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 3]
+		}
+	}
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		WeaponBuff = (&~/Part/Components/BuffProvider1/BuffAmount) * 100
+		PowerUsageContinuousMinutes = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 60
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&PowerUsageContinuousMinutes) / 60
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+}

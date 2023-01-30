@@ -1,0 +1,379 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Bank_Controller"
+	IconNameKey = "Parts/Phaser_Bank_Controller_Icon"
+	ID = "stafa.phaserbank_controller"
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Phaser_Bank_Controller_Desc"
+	Resources
+	[
+		[steel, 60]
+		[coil2, 30]
+		[tristeel, 10]
+	]
+	Size = [1, 2]
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	TypeCategories = [is_crewed, phaserbank, phaserbank_power, phaserbank_controller]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, PhaserReverseOperation]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[1, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [46, 69]
+	}
+	Components : ^/0/Components
+	{
+		BuffOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PhaserReverseOperationBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = PhaserReverseOperation
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 10000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = PowerToggle
+		}
+
+		PhaserBuffProviderLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = Phaser
+			BuffAmount = 100%
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_power
+			}
+			BuffArea = [-1, 0, 1, 2]
+		}
+
+		PhaserBuffProviderCapacitorLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserPoweringStorage
+			BuffAmount = 100%
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_power
+			}
+			BuffArea = [-1, 0, 1, 2]
+		}
+
+		PhaserBuffProviderRight
+		{
+			Type = AreaBuffProvider
+			BuffType = Phaser
+			BuffAmount = 100%
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_power
+			}
+			BuffArea = [1, 0, 1, 2]
+		}
+
+		PhaserBuffProviderCapacitorRight
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserPoweringStorage
+			BuffAmount = 100%
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_power
+			}
+			BuffArea = [1, 0, 1, 2]
+		}
+
+		BatteryLoader
+		{
+			Type = ResourceConverter
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			ToStorage = CombinedBatteryStorage
+			ToQuantity = 100
+			Interval = 100/12000
+		}
+
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			//ResourceStorages = [BatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [PhaserBuffProviderRight, PhaserBuffProviderLeft]
+				ComponentID = BatteryStorage
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		OperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserOperation
+			//GridDistance = 1
+			BuffArea = [0, -1, 2, 2]
+			OperationalToggle = BuffOperational
+		}
+
+		
+		//WeaponTrigger
+		//{
+		//	Type = TriggerProxy
+		//	PartLocation = [0, -1]
+		//	PartCriteria
+		//	{
+		//		Category = phaserbank_power
+		//		Rot = 0
+		//		Left = 0
+		//		Right = 1
+		//		Bottom = 0
+		//	}
+		//	ComponentID = Turret
+		//}
+//
+		//WeaponTrigger2
+		//{
+		//	Type = TriggerProxy
+		//	PartLocation = [0, -1]
+		//	PartCriteria
+		//	{
+		//		Category = phaserbank_power
+		//		Rot = 0
+		//		Left = 0
+		//		Right = 1
+		//		Bottom = 0
+		//	}
+		//	ComponentID = BulletEmitter
+		//}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [.5, .6]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on1.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 2]
+				}
+			]
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+				
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [.5, .5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+	}
+}

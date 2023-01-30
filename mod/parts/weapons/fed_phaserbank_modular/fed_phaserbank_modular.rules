@@ -1,0 +1,238 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Bank_Modular"
+	IconNameKey = "Parts/Phaser_Bank_Modular_Icon"
+	ID = "stafa.phaserbank_Modular"
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Phaser_Bank_Modular_Desc"
+	Resources
+	[
+		[steel, 88]
+		[coil2, 30]
+		[coil2, 6]
+	]
+	Size = [1, 1]
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5
+	TypeCategories = [corridor, uses_power, phaserbank, phaserbank_power, phaserbank_power_modular]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Phaser]
+	IsRotateable = false
+	IsWalled = false
+	IsSelfDestructible = false
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		WallsBlend : <./Data/ships/terran/walls/walls.rules>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor, phaserbank_power_modular]
+		}
+
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		ChargeProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		ReverseOperationLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [-1, 0, 1, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_controller
+			}
+		}
+		ReverseOperationRight
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [1, 0, 1, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_controller
+			}
+		}
+
+		PhaserBuffProviderProxy
+		{
+			Type = AreaBuffProvider
+			BuffType = Phaser
+			BuffAmount = 100%
+			Criteria
+			{
+				Rot = 0
+				Right = 1
+				Category = phaserbank_power_modular
+			}
+			BuffArea = [0, -1, 1, 1]
+			//GridDistance = 1
+		}
+
+		BatteryLoader
+		{
+			Type = ResourceConverter
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			ToStorage = CombinedBatteryStorage
+			ToQuantity = 100
+			Interval = 100/12000
+		}
+
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			//ResourceStorages = [BatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [PhaserBuffProviderProxy]
+				ComponentID = BatteryStorage
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+				
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+}

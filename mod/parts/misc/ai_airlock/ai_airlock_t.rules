@@ -1,0 +1,61 @@
+Part : <./Data/ships/terran/airlock/airlock.rules>/Part
+{
+	ID = "stafa.ai_airlock_t"
+	EditorGroup = "Starfleet"
+	Resources
+	[
+		[torpedo_part, 1]
+	]
+	//IsBuildable = false
+	
+	Components : ^/0/Components
+	{
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		TorpedoStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = torpedo_part
+			GridRect = [0, 0, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [2/64, 6/64, 8/64, 9/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = PowerToggle
+			From
+			[
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 10
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = TorpedoStorage
+			ToQuantity = 1
+			Interval = 0.5
+		}
+	}
+}

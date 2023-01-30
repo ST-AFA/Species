@@ -1,0 +1,356 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Plasma_Tube"
+	IconNameKey = "Parts/Plasma_Tube_Icon"
+	ID = "stafa.plasma_tube"
+	OtherIDs = [plasma_tube]
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Plasma_Tube_Desc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 32]
+	]
+	Size = [1, 3]
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	MaxHealth = 4000
+	TypeCategories = [provides_power, storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower]
+	IgnoreRotationForMirroredSelection = true
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[0, 3]
+		[-1, 0]
+		[-1, 2]
+		[1, 0]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [20, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 12000
+			StartingResources = 0
+			SuppliesResources = true
+			SuppliesResourcesToggle = PowerToggle
+			MinResourcesPickUp = 1000
+			MaxResourcesPickUp = 2000
+			IsIntermediateStorage = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Storage_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "turrets"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "tubes.png"
+						Size = [1, 3]
+					}
+					{
+						File = "tubes_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "tubes_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+							"doodads_on13.png"
+							"doodads_on14.png"
+							"doodads_on15.png"
+							"doodads_on1.png"
+						]
+						Size = [1, 3]
+						AnimationInterval = 1/20
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 1.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries5.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries6.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries7.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries8.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries9.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries10.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries11.png"
+					Size = [1, 3]
+				}
+				{
+					File = "batteries12.png"
+					Size = [1, 3]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, 1.5]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 0
+					Radius = 0
+					Delay = .05
+					ExpandDuration = .35
+					ExpandStartRadius = 6
+					ExpandLoss = 50%
+					FireChancePerNDamage = 80%
+					ImpulsePerNDamage = 40
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [0.5, 0.5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [0.5, 0.5]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 3]
+		}
+	}
+
+	Stats
+	{
+		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+}

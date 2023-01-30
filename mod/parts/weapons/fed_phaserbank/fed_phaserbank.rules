@@ -1,0 +1,403 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Phaser_Bank"
+	IconNameKey = "Parts/Phaser_Bank_Icon"
+	ID = "stafa.phaserbank_floor"
+	EditorGroup = "Starfleet"
+	DescriptionKey = "Parts/Phaser_Bank_Desc"
+	Resources
+	[
+		[steel, 88]
+		[coil2, 30]
+		[coil2, 6]
+	]
+	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, Phaser]
+	Size = [1, 5]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 5000
+	InitialPenetrationResistance = 3
+	PenetrationRectType = Normal
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		ReverseOperationLeft
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [-1, 0, 1, 5]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_controller
+			}
+		}
+		ReverseOperationRight
+		{
+			Type = AreaBuffProvider
+			BuffType = PhaserReverseOperation
+			BuffArea = [1, 0, 1, 5]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Category = phaserbank_controller
+			}
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 2.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 5]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 5]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 5]
+					}
+				]
+			}
+			//OperationalLighting
+			//{
+			//	Layer = "lights_add"
+			//	DamageLevels
+			//	[
+			//		{
+			//			File = "lights.png"
+			//			Size = [1, 5]
+			//		}
+			//	]
+			//}
+			//NonOperationalDoodad = &OperationalDoodad
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 5]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 5]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 5]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Location = [1, 1]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 5]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 5]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 5]
+					}
+				]
+			}
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [.5, 1]
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			//FireInterval = 2/30
+			FireInterval = 2.0
+			FiringArc = 360d
+			RotateSpeed = 360d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 400
+			FirePermissionToggle = FireModeToggle
+			AutoTargetCrewSafetyDist = 8
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			HoldTargetWhileFiring = 0.5
+			Emitter = BeamEmitter
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Turret
+			Invert = true
+		}
+
+		BeamEmitter : &<../../../shots/phaser_beam_deck/phaser_beam_deck.rules>
+		{
+			Type = BeamEmitter
+			Location = [0.45, 0]
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			FireDelay = 0
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 500
+			MinResourcesUsed = 1
+		}
+
+		//TurretGraphics
+		//{
+		//	Type = Graphics
+		//	ChainedTo = Turret
+		//	Rotation = 90d
+		//	OperationalToggle = IsOperational
+		//	OperationalDoodad
+		//	{
+		//		Layer = "roof_turrets"
+		//		DamageLevels
+		//		[
+		//			{
+		//				File = "turret_on.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [2, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//			{
+		//				File = "turret_on_33.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [2, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//			{
+		//				File = "turret_on_66.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [1, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//		]
+		//	}
+		//	NonOperationalDoodad
+		//	{
+		//		Layer = "roof_turrets"
+		//		DamageLevels
+		//		[
+		//			{
+		//				File = "turret_off.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [2, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//			{
+		//				File = "turret_off_33.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [2, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//			{
+		//				File = "turret_off_66.png"
+		//				NormalsFile = "turret_normals.png"
+		//				Size = [1, 2]
+		//				Offset = [0, -1/64]
+		//			}
+		//		]
+		//	}
+		//}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 2.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 2.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [.5, .5]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Turret/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [.5, .5]
+					}
+				}
+				
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 5]
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
+		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+		RecCrew = (&RecPower) * 4
+	}
+
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/PDShot"
+			Stats
+			{
+				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
+				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
+				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+				BurstDuration = &~/Part/Components/BeamEmitter/Duration
+				BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				DamagePerSecond = (&BurstDamage) * (&ROF)
+				Damage = [&../BurstDamage, &../DamagePerSecond]
+				RangeLimited = [&~/Part/Components/BeamEmitter/Range/BaseValue, &~/Part/Components/BeamEmitter/Range/MaxValue]
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+			}
+		}
+	]
+}

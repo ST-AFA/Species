@@ -1,0 +1,254 @@
+ID = "stafa.fed_tricobalt_torpedo_shot"  // originals by kurim
+Range = { BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+IdealRange
+[
+	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+	{ BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.5
+		Density = 0.1
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 240d
+		Delay = .1
+		AvoidanceRaycastDistance = 250
+		VelocityCompensation = 60%
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 65
+	}
+
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90, 0]
+		AccelerationOverTime = [0, .75]
+		Direction = FrameOfReferenceVelocity
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 15
+		HasTarget = true
+	}
+
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 175
+		TargetCategory = "laser"
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5/30
+		// FactorEffectsWith = Targetable
+		// Penetration = 25
+		// PenetratesCrew = true
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 900
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					// Type = Damage
+					// Damage = 4500
+					// Radius = 8
+					Type = ExplosiveDamage
+					TotalDamage = 150000
+					Radius = 10
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					// Type = Impulse;
+					// Impulse = 600;
+					Type = ExplosiveDamage
+					TotalDamage = 45000
+					Radius = 8
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/tricobalt_torpedo_hit.rules>
+				&<particles/tricobalt_torpedo_flash.rules>
+				&<particles/tricobalt_torpedo_sparks.rules>
+				&<particles/tricobalt_torpedo_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "tricobalt_torpedo_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .3
+				}
+			]
+		}
+		HitStructural = &HitOperational
+		// HitStructural
+		// {
+			// HitEffects
+			// [
+				// {
+					// Type = Damage
+					// Damage = 1500
+				// }
+				// {
+					// Type = Impulse;
+					// Impulse = 2.5;
+				// }
+			// ]
+
+			// MediaEffects
+			// [
+				// &<particles/tricobalt_torpedo_hit_struct.rules>
+				// &<particles/tricobalt_torpedo_flash.rules>
+				// &<particles/tricobalt_torpedo_sparks_struct.rules>
+
+				// : /BASE_SOUNDS/AudioExterior
+				// {
+					// Sound = "tricobalt_torpedo_hit.wav"
+					// Volume = .3
+					// SpeedVariation = .4
+				// }
+			// ]
+		// }
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "tricobalt_torpedo_shot.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [2, 2]
+			}
+			FrameCount = 8
+			FrameSize = [128, 128]
+			FramesPerRow = 2
+			FramesPerSecond = 60
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [6, 6]
+			VertexColor = [195, 236, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

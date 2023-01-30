@@ -1,0 +1,56 @@
+ID = "st-afa.100_federation"
+Name = "ST-AFA - Federation"
+Version = 0.1.2.2
+Author = "ST-AFA Mod-Team"
+CompatibleGameVersions = ["0.20.24"]
+ModifiesMultiplayer = true
+Logo = logo.png
+Description = "Adds new STAR TREK stuff to the game \n\n"\
+              "<red>WARNING: This mod is a WIP and a development mod. Some things might be unbalanced or broken!</red> \n\n"\
+			  "- adds Weapons\n"\
+			  "- adds Engines\n"\
+			  "- adds Rooms\n"\
+			  "- adds Energy (WarpCore)\n"\
+			  "Requires STAR TREK - A FINAL ASSAULT RESOURCE MOD"
+StringsFolder = "strings"
+
+
+Actions
+[
+	//******************** FUNCTIONS ********************
+
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/priorities.rules>"
+		Overrides
+		{
+			CaptainsRoom_Supply = 10
+			CaptainsRoom_Crew = 10
+		}
+	}
+
+	//******************** TECHS ********************
+	{
+		Action = AddMany
+		AddTo = "<modes/career/techs.rules>/Techs"
+		ManyToAdd = &<fed_tech.rules>/Techs
+	}
+	
+	//******************** PARTS ********************
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/terran/parts"
+		ManyToAdd = &<parts/federation.rules>/Parts
+	}
+	//******************** SOUNDS ********************
+
+	//******************** RESOURCES ********************
+
+	//******************** UI ********************
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
+		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
+	}
+
+]

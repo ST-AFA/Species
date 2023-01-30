@@ -1,0 +1,8 @@
+Part : <fed_warpnacelle_3x6.rules>/Part
+{
+	ID = "stafa.fed_warpnacelle_3x6_special"
+	//IsBuildable = false
+	ProhibitRects
+	[
+	]
+}
