@@ -249,12 +249,135 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			OperationalToggle = IsOperational
-			FireDelay = 0
+			FireDelay = 0.5
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 500
 			MinResourcesUsed = 1
 		}
 
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [.85975, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "charge.wav"
+					Volume = .25
+					Speed = 1.5
+				}
+			]
+		}
+
+		WeaponSprite
+		{
+			Type = Sprite
+			//ChainedTo = Turret
+			OperationalToggle = IsOperational
+			Location = [0.5, 3]
+			Rotation = 0d
+			Layer = "roof_doodads"
+			ResetAnimationTrigger = Turret
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"ani2/weapon01.png"
+					"ani2/weapon02.png"
+					"ani2/weapon03.png"
+					"ani2/weapon04.png"
+					"ani2/weapon05.png"
+					"ani2/weapon06.png"
+					"ani2/weapon07.png"
+					"ani2/weapon08.png"
+					"ani2/weapon09.png"
+					"ani2/weapon10.png"
+					"ani2/weapon10.png"
+					"ani2/weapon10.png"
+					"ani2/weapon10.png"
+					"ani2/weapon10.png"
+					"ani2/weapon11.png"
+					"ani2/weapon11.png"
+					//"ani/weapon12.png"
+					//"ani/weapon13.png"
+					//"ani/weapon14.png"
+					//"ani/weapon15.png"
+					//"ani/weapon16.png"
+					//"ani/weapon17.png"
+					//"ani/weapon18.png"
+					//"ani/weapon19.png"
+					//"ani/weapon20.png"
+					//"ani/weapon21.png"
+					//"ani/weapon22.png"
+					//"ani/weapon23.png"
+					//"ani/weapon24.png"
+					//"ani/weapon25.png"
+					//"ani/weapon26.png"
+					//"ani/weapon27.png"
+					//"ani/weapon28.png"
+					//"ani/weapon29.png"
+					//"ani/weapon30.png"
+					//"ani/weapon31.png"
+					//"ani/weapon32.png"
+					//"ani/weapon33.png"
+					//"ani/weapon34.png"
+					//"ani/weapon35.png"
+					//"ani/weapon36.png"
+					//"ani/weapon37.png"
+					//"ani/weapon38.png"
+					//"ani/weapon39.png"
+					//"ani/weapon40.png"
+					//"ani/weapon41.png"
+					//"ani/weapon42.png"
+					//"ani/weapon43.png"
+					//"ani/weapon44.png"
+					//"ani/weapon45.png"
+					//"ani/weapon46.png"
+					//"ani/weapon47.png"
+					//"ani/weapon48.png"
+					//"ani/weapon49.png"
+					//"ani/weapon50.png"
+					//"ani/weapon51.png"
+					//"ani/weapon52.png"
+					//"ani/weapon53.png"
+					//"ani/weapon54.png"
+					//"ani/weapon55.png"
+					//"ani/weapon56.png"
+					//"ani/weapon57.png"
+					//"ani/weapon58.png"
+					//"ani/weapon59.png"
+					//"ani/weapon60.png"
+					//"ani/weapon61.png"
+					//"ani/weapon62.png"
+					//"ani/weapon63.png"
+					//"ani/weapon64.png"
+					//"ani/weapon65.png"
+					//"ani/weapon66.png"
+					//"ani/weapon67.png"
+					//"ani/weapon68.png"
+					//"ani/weapon69.png"
+					//"ani/weapon70.png"
+					//"ani/weapon71.png"
+					//"ani/weapon72.png"
+					//"ani/weapon73.png"
+					//"ani/weapon74.png"
+					//"ani/weapon75.png"
+					//"ani/weapon76.png"
+					//"ani/weapon77.png"
+					//"ani/weapon78.png"
+					"weaponX.png"
+				]
+				Size = [1, 6]
+				AnimationInterval = 0.035
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
 		//TurretGraphics
 		//{
 		//	Type = Graphics
