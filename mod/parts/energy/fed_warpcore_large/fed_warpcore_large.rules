@@ -15,6 +15,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 20
 	Size = [8, 8]
 	IsRotateable = false
+	CrewSpeedFactor = .8
+	CrewCongestedSpeedFactor = .5
 	SelectionPriority = 0
 	SelectionTypeID = "reactors"
 	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
