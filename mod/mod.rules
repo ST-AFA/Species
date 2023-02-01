@@ -1,11 +1,11 @@
 ID = "st-afa.100_federation"
 Name = "ST-AFA - Federation"
-Version = 0.1.2.2
+Version = 0.1.3
 Author = "ST-AFA Mod-Team"
-CompatibleGameVersions = ["0.20.24"]
+CompatibleGameVersions = ["0.20.36"]
 ModifiesMultiplayer = true
 Logo = logo.png
-Description = "Adds new STAR TREK stuff to the game \n\n"\
+Description = "Adds STAR TREK stuff to the game \n\n"\
               "<red>WARNING: This mod is a WIP and a development mod. Some things might be unbalanced or broken!</red> \n\n"\
 			  "- adds Weapons\n"\
 			  "- adds Engines\n"\
