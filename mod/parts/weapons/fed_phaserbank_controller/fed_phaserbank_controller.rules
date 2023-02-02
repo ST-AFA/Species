@@ -96,36 +96,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [-1, 0, 1, 2]
 		}
 
-		PhaserBuffProviderCapacitorLeft
-		{
-			Type = AreaBuffProvider
-			BuffType = PhaserPoweringStorage
-			BuffAmount = 100%
-			Criteria
-			{
-				Rot = 0
-				Category = phaserbank_power
-			}
-			BuffArea = [-1, 0, 1, 2]
-		}
-
 		PhaserBuffProviderRight
 		{
 			Type = AreaBuffProvider
 			BuffType = Phaser
-			BuffAmount = 100%
-			Criteria
-			{
-				Rot = 0
-				Category = phaserbank_power
-			}
-			BuffArea = [1, 0, 1, 2]
-		}
-
-		PhaserBuffProviderCapacitorRight
-		{
-			Type = AreaBuffProvider
-			BuffType = PhaserPoweringStorage
 			BuffAmount = 100%
 			Criteria
 			{
@@ -163,7 +137,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = AreaBuffProvider
 			BuffType = PhaserOperation
-			//GridDistance = 1
 			BuffArea = [0, -1, 2, 2]
 			OperationalToggle = BuffOperational
 		}
