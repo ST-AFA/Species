@@ -3,6 +3,10 @@ Part : <./Data/ships/terran/armor_tri/armor_tri.rules>/Part
 	ID = stafa.tritanium_armor_tri
 	OtherIDs = []
 	EditorGroup = "Starfleet"
+	Resources
+	[
+		[tristeel, 5]
+	]
 	//IsBuildable = false
 	MaxHealth = 5000
 	InitialPenetrationResistance = 15

@@ -3,6 +3,10 @@ Part : <./Data/ships/terran/armor_wedge/armor_wedge.rules>/Part
 	ID = stafa.duranium_armor_wedge
 	OtherIDs = []
 	EditorGroup = "Starfleet"
+	Resources
+	[
+		[tristeel, 3]
+	]
 	//IsBuildable = false
 	MaxHealth = 6000
 	InitialPenetrationResistance = 15

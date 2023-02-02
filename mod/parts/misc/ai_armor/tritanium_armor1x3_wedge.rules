@@ -3,6 +3,10 @@ Part : <./Data/ships/terran/armor_1x3_wedge/armor_1x3_wedge.rules>/Part
 	ID = stafa.tritanium_armor1x3_wedge
 	OtherIDs = []
 	EditorGroup = "Starfleet"
+	Resources
+	[
+		[tristeel, 5]
+	]
 	//IsBuildable = false
 	MaxHealth = 30000
 	InitialPenetrationResistance = 15
