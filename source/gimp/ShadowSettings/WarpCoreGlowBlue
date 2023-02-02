@@ -1,0 +1,12 @@
+# GIMP 'Schlagschatten ' settings
+
+(time 0)
+(x 0)
+(y 0)
+(radius 10)
+(grow-shape circle)
+(grow-radius 12)
+(color (color-rgba 0.18431372940540314 0.50196075439453125 0.83921569585800171 1))
+(opacity 1.4000000000000008)
+
+# end of 'Schlagschatten ' settings
