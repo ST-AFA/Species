@@ -13,6 +13,8 @@ Parts
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
 	// Energy
+	&<energy/fed_warpcore_small/fed_warpcore_small.rules>/Part
+	//&<energy/fed_warpcore_med/fed_warpcore_med.rules>/Part
 	&<energy/fed_warpcore_large/fed_warpcore_large.rules>/Part
 	&<energy/fed_plasma_tube/fed_plasma_tube.rules>/Part
 	// Engines

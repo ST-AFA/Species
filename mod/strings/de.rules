@@ -30,6 +30,12 @@ Parts
 	Captains_Room_Icon = "Bereitschaftsraum"
 	Captains_Room_Desc = "Der Bereitschaftsraum ist das Büro des kommandierenden Offiziers."
 	// Energy
+	Warpcore_small = "Warpcore"
+	Warpcore_small_Icon = "Warpcore"
+	Warpcore_small_Desc = "Provides energy to compatible systems in a huge radius and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Warpcore_med = "Warpcore"
+	Warpcore_med_Icon = "Warpcore"
+	Warpcore_med_Desc = "Provides energy to compatible systems in a huge radius and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
 	Warpcore_large = "Warpcore"
 	Warpcore_large_Icon = "Warpcore"
 	Warpcore_large_Desc = "Provides energy to compatible systems in a huge radius and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to wrk properly."
