@@ -21,6 +21,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
+	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
+	Blueprints : ^/Blueprints/DrawProhibitedZoneCategories [phaserbank]
+	ProhibitRects
+    [
+		[phaserbank, [0, -1, 1, 1]]
+		[phaserbank, [-1, -1, 1, 3]]
+		[phaserbank, [-1, 4, 1, 3]]
+		[phaserbank, [-2, 2, 1, 2]]
+        [phaserbank, [1, -1, 1, 3]]
+		[phaserbank, [1, 4, 1, 3]]
+		[phaserbank, [0, 6, 1, 1]]
+		[phaserbank, [2, 2, 1, 2]]
+    ]
 	EditorIcon
 	{
 		Texture
@@ -28,7 +41,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 64]
+		Size = [64, 384]
 	}
 	Components : ^/0/Components
 	{
@@ -73,12 +86,65 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
+		
+		PhaserMode
+		{
+			Type = UIToggle
+			ToggleID = "phaser_bank_arc"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		PhaserToggle180
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 0
+		}
+
+		PhaserToggle90
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 1
+		}
+
+		PhaserToggle45
+		{
+			Type = ModeToggle
+			Mode = PhaserMode
+			OnMode = 2
+		}
+
+		deg180
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle180
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_180.rules>/Components
+		}
+
+		deg90
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle90
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_90.rules>/Components
+		}
+
+		deg45
+		{
+			Type = ToggledComponents
+			Toggle = PhaserToggle45
+			IncludeInBlueprints = true
+			Components = &<fed_phaserbank_45.rules>/Components
+		}
 
 		ReverseOperationLeft
 		{
 			Type = AreaBuffProvider
 			BuffType = PhaserReverseOperation
-			BuffArea = [-1, 0, 1, 5]
+			BuffArea = [-1, 0, 1, 6]
 			OperationalToggle = IsOperational
 			Criteria
 			{
@@ -90,7 +156,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = AreaBuffProvider
 			BuffType = PhaserReverseOperation
-			BuffArea = [1, 0, 1, 5]
+			BuffArea = [1, 0, 1, 6]
 			OperationalToggle = IsOperational
 			Criteria
 			{
@@ -176,130 +242,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 
-		Turret
-		{
-			Type = TurretWeapon
-			Location = [.5, 3]
-			Rotation = -90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
-			AutoFireToggle = AutoFireToggle
-			//FireInterval = 2/30
-			FireInterval = 2.0
-			FiringArc = 360d
-			RotateSpeed = 360d
-			FireThresholdAngle = 1d
-			AIFirepowerRating = 400
-			FirePermissionToggle = FireModeToggle
-			AutoTargetCrewSafetyDist = 8
-			IgnoreSourceShipLowLOSChecks = true
-			IgnoreJunkLOSChecks = true
-			HoldTargetWhileFiring = 0.5
-			Emitter = BeamEmitter
-
-			AutoTargets
-			[
-				{
-					TargetType = ShipParts
-					Toggle = AutoTargetToggle
-				}
-			]
-
-			BlueprintArcSprite
-			{
-				Texture = &/INDICATORS/WeaponArc
-				Size = [0, 1.5]
-				Color = [255, 0, 0, 63]
-			}
-			BlueprintArcRadius = 10
-			BlueprintArcSpriteSegments = 64
-
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
-		}
-
-		ReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsOperational
-			ShowProgressFor = Turret
-			Invert = true
-		}
-
-		BeamEmitter : &<../../../shots/phaser_beam_deck/phaser_beam_deck.rules>
-		{
-			Type = BeamEmitter
-			Location = [0.45, 0]
-			ChainedTo = Turret
-			FireTrigger = Turret
-			GetTargetFrom = Turret
-			OperationalToggle = IsOperational
-			FireDelay = 0.49
-			ResourceStorage = BatteryStorage
-			ResourcesUsed = 500
-			MinResourcesUsed = 1
-		}
-
-		ChargeEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = Turret
-			Trigger = Turret
-			Location = [0.5, 3]
-			AnchorMediaEffects = true
-
-			MediaEffects
-			[
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "charge.wav"
-					Volume = .25
-					Speed = 1.5
-				}
-			]
-		}
-
-		WeaponSprite
-		{
-			Type = Sprite
-			//ChainedTo = Turret
-			OperationalToggle = IsOperational
-			Location = [0.5, 3]
-			Rotation = 0d
-			Layer = "roof_doodads"
-			ResetAnimationTrigger = Turret
-			AtlasSprite
-			{
-				AnimationFiles
-				[
-					"animation/weapon01.png"
-					"animation/weapon02.png"
-					"animation/weapon03.png"
-					"animation/weapon04.png"
-					"animation/weapon05.png"
-					"animation/weapon06.png"
-					"animation/weapon07.png"
-					"animation/weapon08.png"
-					"animation/weapon09.png"
-					"animation/weapon10.png"
-					"animation/weapon10.png"
-					"animation/weapon10.png"
-					"animation/weapon10.png"
-					"animation/weapon10.png"
-					"animation/weapon11.png"
-					"animation/weapon11.png"
-					"animation/weaponX.png"
-				]
-				Size = [1, 6]
-				AnimationInterval = 0.035
-				AnimationStartTime = MinValue
-				ClampAnimation = true
-			}
-		}
-
 		OperationEffects
 		{
 			Type = ToggleEffects
@@ -316,37 +258,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [.5, 3]
 		}
 
-		Indicators
-		{
-			Type = IndicatorSprites
-			Location = [.5, 3]
-			Layer = "indicators"
-			Indicators
-			[
-				// Turned off.
-				{
-					Toggle = PowerToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/PowerOff
-						Size = [.5, .5]
-					}
-				}
-
-				// Out of power.
-				{
-					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
-					AtlasSprite
-					{
-						File = &/INDICATORS/NoPower
-						Size = [.5, .5]
-					}
-				}
-				
-			]
-		}
-
 		Blueprints
 		{
 			Type = BlueprintSprite
@@ -354,39 +265,4 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Size = [1, 6]
 		}
 	}
-
-	Stats
-	{
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
-		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
-		RecCrew = (&RecPower) * 4
-	}
-
-
-	StatsByCategory
-	[
-		{
-			NameKey = "StatCategories/PDShot"
-			Stats
-			{
-				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
-				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
-				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
-				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
-				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
-				BurstDuration = &~/Part/Components/BeamEmitter/Duration
-				BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				DamagePerSecond = (&BurstDamage) * (&ROF)
-				Damage = [&../BurstDamage, &../DamagePerSecond]
-				RangeLimited = [&~/Part/Components/BeamEmitter/Range/BaseValue, &~/Part/Components/BeamEmitter/Range/MaxValue]
-				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = Infinity
-				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
-				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
-			}
-		}
-	]
 }

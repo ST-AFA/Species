@@ -1,0 +1,193 @@
+Components
+{
+	Turret
+	{
+		Type = TurretWeapon
+		Location = [.5, 3]
+		Rotation = 0d// Relative to unrotated part.
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		//FireInterval = 2/30
+		FireInterval = 2.0
+		FiringArc = 180d
+		RotateSpeed = 360d
+		FireThresholdAngle = 1d
+		AIFirepowerRating = 400
+		FirePermissionToggle = FireModeToggle
+		AutoTargetCrewSafetyDist = 8
+		IgnoreSourceShipLowLOSChecks = true
+		IgnoreJunkLOSChecks = true
+		HoldTargetWhileFiring = 0.5
+		Emitter = BeamEmitter
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+		]
+
+		BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = Turret
+		Invert = true
+	}
+
+	BeamEmitter : &<../../../shots/phaser_beam_deck/phaser_beam_deck_180.rules>
+	{
+		Type = BeamEmitter
+		Location = [0.45, 0]
+		ChainedTo = Turret
+		FireTrigger = Turret
+		GetTargetFrom = Turret
+		OperationalToggle = IsOperational
+		FireDelay = 0.49
+		ResourceStorage = BatteryStorage
+		ResourcesUsed = 500
+		MinResourcesUsed = 1
+	}
+
+	ChargeEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Turret
+		Trigger = Turret
+		Location = [0.5, 3]
+		AnchorMediaEffects = true
+
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "charge.wav"
+				Volume = .25
+				Speed = 1.5
+			}
+		]
+	}
+
+	WeaponSprite
+	{
+		Type = Sprite
+		//ChainedTo = Turret
+		OperationalToggle = IsOperational
+		Location = [0.5, 3]
+		Rotation = 0d
+		Layer = "roof_doodads"
+		ResetAnimationTrigger = Turret
+		AtlasSprite
+		{
+			AnimationFiles
+			[
+				"animation/weapon01.png"
+				"animation/weapon02.png"
+				"animation/weapon03.png"
+				"animation/weapon04.png"
+				"animation/weapon05.png"
+				"animation/weapon06.png"
+				"animation/weapon07.png"
+				"animation/weapon08.png"
+				"animation/weapon09.png"
+				"animation/weapon10.png"
+				"animation/weapon10.png"
+				"animation/weapon10.png"
+				"animation/weapon10.png"
+				"animation/weapon10.png"
+				"animation/weapon11.png"
+				"animation/weapon11.png"
+				"animation/weaponX.png"
+			]
+			Size = [1, 6]
+			AnimationInterval = 0.035
+			AnimationStartTime = MinValue
+			ClampAnimation = true
+		}
+	}
+}
+
+Indicators
+{
+	Type = IndicatorSprites
+	Location = [.5, 3]
+	Layer = "indicators"
+	Indicators
+	[
+		// Turned off.
+		{
+			Toggle = PowerToggle
+			AtlasSprite
+			{
+				File = &/INDICATORS/PowerOff
+				Size = [.5, .5]
+			}
+		}
+
+		// Out of power.
+		{
+			Toggle = BatteryStorage
+			Delay = &~/Part/Components/Turret/FireInterval
+			//Delay = 0.49
+			AtlasSprite
+			{
+				File = &/INDICATORS/NoPower
+				Size = [.5, .5]
+			}
+		}
+		
+	]
+}
+
+Stats
+{
+	PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	MinPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) / 2
+	RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+	RecCrew = (&RecPower) * 4
+}
+
+
+StatsByCategory
+[
+	{
+		NameKey = "StatCategories/PDShot"
+		Stats
+		{
+			ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
+			ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+			ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+			DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
+			HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+			BurstDuration = &~/Part/Components/BeamEmitter/Duration
+			BurstDamage = (&DamagePerShot) * ((&BurstDuration) / (&HitInterval))
+			ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+			DamagePerSecond = (&BurstDamage) * (&ROF)
+			Damage = [&../BurstDamage, &../DamagePerSecond]
+			RangeLimited = [&~/Part/Components/BeamEmitter/Range/BaseValue, &~/Part/Components/BeamEmitter/Range/MaxValue]
+			Arc = deg(&~/Part/Components/Turret/FiringArc)
+			TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+			ShotSpeed = Infinity
+			PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+			PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+		}
+	}
+]

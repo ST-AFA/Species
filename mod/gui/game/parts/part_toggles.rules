@@ -133,4 +133,59 @@ PartToggles
 			}
 		]
 	}
+	// Phaser Bank Arc
+	{
+		ToggleID = "phaser_bank_arc"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// 180°
+			{
+				ChoiceID = "phaser_arc_180"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/Phaser_arc_180_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_180.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 90°
+			{
+				ChoiceID = "phaser_arc_90"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/Phaser_arc_90_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_90.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 45°
+			{
+				ChoiceID = "phaser_arc_45"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/Phaser_arc_45_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_45.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+
+	}
 ]
