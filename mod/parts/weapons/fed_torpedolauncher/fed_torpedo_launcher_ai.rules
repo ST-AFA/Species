@@ -1,0 +1,11 @@
+Part : <fed_torpedo_launcher.rules>/Part
+{
+	ID = "stafa.torpedolauncher_ai"
+	OtherIDs = []
+	Resources
+	[
+		[steel, 1]
+	]
+	TypeCategories = [weapon, is_crewed]
+	//IsBuildable = false
+}
