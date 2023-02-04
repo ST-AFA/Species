@@ -11,7 +11,7 @@ Components
 		FireInterval = 2.0
 		FiringArc = 45d
 		RotateSpeed = 360d
-		FireThresholdAngle = 1d
+		FireThresholdAngle = 0.25d
 		AIFirepowerRating = 400
 		FirePermissionToggle = FireModeToggle
 		AutoTargetCrewSafetyDist = 8
@@ -19,6 +19,7 @@ Components
 		IgnoreJunkLOSChecks = true
 		HoldTargetWhileFiring = 0.5
 		Emitter = BeamEmitter
+		AlwaysShowCoverage = true
 
 		AutoTargets
 		[
@@ -49,7 +50,7 @@ Components
 		Type = ProgressBar
 		OperationalToggle = IsOperational
 		ShowProgressFor = Turret
-		Invert = true
+		Invert = false
 	}
 	
 	BeamEmitter : &<../../../shots/phaser_beam_deck/phaser_beam_deck_45.rules>

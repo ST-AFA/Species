@@ -21,10 +21,10 @@ Parts
     Phaser_Bank_Controller_Desc = "Phaser Bank Controllroom, w/o Phaserbank will not work"
     Phaser_Bank = "Phaser Bank"
     Phaser_Bank_Icon = "Phaser Bank"
-    Phaser_Bank_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 360° arc."
+    Phaser_Bank_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 180°-45° arc."
     Phaser_Bank_Modular = "Phaser Bank"
     Phaser_Bank_Modular_Icon = "Phaser Bank"
-    Phaser_Bank_Modular_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 360° arc."
+    Phaser_Bank_Modular_Desc = "Phaser Bank beam weapon with numerous emitters that allows it to fire in a 180°-45° arc."
     // Rooms
 	Captains_Room = "Captain's ready room"
 	Captains_Room_Icon = "Ready room"
@@ -81,6 +81,8 @@ Inputs
 		phaser_arc_180	= "180° Firearc"
 		phaser_arc_90	= "90° Firearc"
 		phaser_arc_45	= "45° Firearc"
+		fire_left	= "Fire to the left"
+		fire_right	= "Fire to the right"
 	}
 }
 
@@ -99,6 +101,9 @@ PartToggles
 	Phaser_arc_180_Tooltip	= "180° Firearc | Normal damage"
 	Phaser_arc_90_Tooltip	= "90° Firearc | High damage"
 	Phaser_arc_45_Tooltip	= "45° Firearc | Highest damage"
+
+	Fire_Left_Tooltip	= "Fire to the left (Based on Part direction)"
+	Fire_Right_Tooltip	= "Fire to the right (Based on Part direction)"
 }
 
 Stats
