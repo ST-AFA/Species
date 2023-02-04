@@ -1485,7 +1485,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					OperationalToggle = LeftIsOperational
 					DrainResourcesFrom = LeftBatteryStorage
 					ResourceDrainPerDamage = .15
-					Location = [130, 2]
 					ShieldMediaEffects
 					[
 						{
