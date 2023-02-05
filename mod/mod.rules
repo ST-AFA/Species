@@ -1,6 +1,6 @@
 ID = "st-afa.100_federation"
 Name = "ST-AFA - Federation"
-Version = 0.1.3
+Version = 0.1.4
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.20.36"]
 ModifiesMultiplayer = true
@@ -51,6 +51,18 @@ Actions
 		Action = AddMany
 		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
 		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
+	}
+
+	{
+		Action = Add
+		AddTo = "<./Data/ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
+		ToAdd = phaserbank
+	}
+
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
+		Overrides = &<gui/game/indicators/indicators.rules>
 	}
 
 ]

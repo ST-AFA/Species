@@ -138,18 +138,18 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./Data/ships/terran/missile_launcher/nuke/external_walls.png"
-					NormalsFile = "./Data/ships/terran/missile_launcher/nuke/external_walls_normals.png"
+					File = "external_walls.png"
+					NormalsFile = "external_walls_normals.png"
 					Size = [2, 3]
 				}
 				{
-					File = "./Data/ships/terran/missile_launcher/nuke/external_walls_33.png"
-					NormalsFile = "./Data/ships/terran/missile_launcher/nuke/external_walls_normals_33.png"
+					File = "external_walls_33.png"
+					NormalsFile = "external_walls_normals_33.png"
 					Size = [2, 3]
 				}
 				{
-					File = "./Data/ships/terran/missile_launcher/nuke/external_walls_66.png"
-					NormalsFile = "./Data/ships/terran/missile_launcher/nuke/external_walls_normals_66.png"
+					File = "external_walls_66.png"
+					NormalsFile = "external_walls_normals_66.png"
 					Size = [2, 3]
 				}
 			]
@@ -159,7 +159,7 @@ Components
 	MissileSprites
 	{
 		Type = ResourceSprites
-		Location = [1, 1.5]
+		Location = [1, 1.6]
 		ResourceStorage = MissileStorage
 		Layer = "weapons"
 		HasZeroResourceSprite = true
@@ -172,69 +172,69 @@ Components
 			}
 			{
 				File = "missile_1.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_1.png"
+				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_1.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_1.png"
+				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_1.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_1.png"
+				NormalsFile = "missile_normals_1.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_2.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_2.png"
+				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_2.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_2.png"
+				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_2.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_2.png"
+				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_2.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_2.png"
+				NormalsFile = "missile_normals_2.png"
 				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
 				File = "missile_3.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_3.png"
+				NormalsFile = "missile_normals_3.png"
 				Size = [2, 3]
 			}
 			{
 				File = "missile_3.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_3.png"
+				NormalsFile = "missile_normals_3.png"
 				Size = [2, 3]
 			}
 			{
 				File = "missile_3.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_3.png"
+				NormalsFile = "missile_normals_3.png"
 				Size = [2, 3]
 			}
 			{
 				File = "missile_3.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_3.png"
+				NormalsFile = "missile_normals_3.png"
 				Size = [2, 3]
 			}
 			{
 				File = "missile_4.png"
-				NormalsFile = "./Data/ships/terran/missile_launcher/he/missile_normals_4.png"
+				NormalsFile = "missile_normals_4.png"
 				Size = [2, 3]
 			}
 		]
@@ -303,7 +303,7 @@ Components
 				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerLong/Duration
 				AtlasSprite
 				{
-					File = ../../../../gui/game/indicators/indicator_torpedo_part.png
+					File =  &/INDICATORS/NoTricobalt
 					Size = [1, 1]
 				}
 			}
