@@ -150,16 +150,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Components = &<quantum_torpedo/launcher_quantum_torpedo.rules>/Components
 		}
 
-		TircobaltTorpedoToggle
+		TricobaltTorpedoToggle
 		{
 			Type = ModeToggle
 			Mode = TorpedoType
 			OnMode = 2
 		}
-		TircobaltTorpedoComponents
+		TricobaltTorpedoComponents
 		{
 			Type = ToggledComponents
-			Toggle = TircobaltTorpedoToggle
+			Toggle = TricobaltTorpedoToggle
 			IncludeInBlueprints = true
 			Components = &<tricobalt_torpedo/launcher_tricobalt_torpedo.rules>/Components
 		}

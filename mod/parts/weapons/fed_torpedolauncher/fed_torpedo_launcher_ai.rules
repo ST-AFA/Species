@@ -7,5 +7,30 @@ Part : <fed_torpedo_launcher.rules>/Part
 		[steel, 1]
 	]
 	TypeCategories = [weapon, is_crewed]
+	ProhibitAbove = 0
 	//IsBuildable = false
+	Components : <fed_torpedo_launcher.rules>/Part/Components
+	{
+		PhotonTorpedoComponents
+		{
+			Type = ToggledComponents
+			Toggle = PhotonTorpedoToggle
+			IncludeInBlueprints = true
+			Components = &<photon_torpedo/launcher_photon_torpedo_ai.rules>/Components
+		}
+		QuantumTorpedoComponents
+		{
+			Type = ToggledComponents
+			Toggle = QuantumTorpedoToggle
+			IncludeInBlueprints = true
+			Components = &<quantum_torpedo/launcher_quantum_torpedo_ai.rules>/Components
+		}
+		TricobaltTorpedoComponents
+		{
+			Type = ToggledComponents
+			Toggle = TricobaltTorpedoToggle
+			IncludeInBlueprints = true
+			Components = &<tricobalt_torpedo/launcher_tricobalt_torpedo_ai.rules>/Components
+		}
+	}
 }
