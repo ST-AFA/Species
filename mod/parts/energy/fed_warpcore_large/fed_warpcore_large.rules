@@ -12,6 +12,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[enriched_uranium, 24]
 		[antimatter, 4]
 	]
+	CrewSpeedFactor = .8
+	CrewCongestedSpeedFactor = .5
 	AIValueFactor = 10
 	Size = [8, 8]
 	IsRotateable = false
