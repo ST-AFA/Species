@@ -34,11 +34,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[3, 2]
 		[4, 2]
 		[5, 2]
-		[6, 6]
 		[1, 3]
 		[1, 4]
 		[4, 3]
 		[4, 4]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [2, 3]
+			Value = [Right]
+		}
+		{
+			Key = [3, 3]
+			Value = [Left]
+		}
 	]
 	AllowedDoorLocations
 	[
@@ -367,26 +377,26 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [6, 6]
 						AnimationInterval = 0.3
 					}
-					{
-						AnimationFiles
-						[
-							"reactor_on_33_1.png"
-							"reactor_on_33_2.png"
-							"reactor_on_33_3.png"
-						]
-						Size = [6, 6]
-						AnimationInterval = 0.3
-					}
-					{
-						AnimationFiles
-						[
-							"reactor_on_66_1.png"
-							"reactor_on_66_2.png"
-							"reactor_on_66_3.png"
-						]
-						Size = [6, 6]
-						AnimationInterval = 0.3
-					}
+					// {
+						// AnimationFiles
+						// [
+							// "reactor_on_33_1.png"
+							// "reactor_on_33_2.png"
+							// "reactor_on_33_3.png"
+						// ]
+						// Size = [6, 6]
+						// AnimationInterval = 0.3
+					// }
+					// {
+						// AnimationFiles
+						// [
+							// "reactor_on_66_1.png"
+							// "reactor_on_66_2.png"
+							// "reactor_on_66_3.png"
+						// ]
+						// Size = [6, 6]
+						// AnimationInterval = 0.3
+					// }
 				]
 			}
 			//NonOperationalDoodad = &OperationalDoodad

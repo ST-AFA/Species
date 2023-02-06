@@ -7,7 +7,7 @@ Part : <./Data/ships/terran/armor_1x3_wedge/armor_1x3_wedge.rules>/Part
 	[
 		[tristeel, 5]
 	]
-	//IsBuildable = false
+	IsBuildable = &<../ai_control.rules>/IsBuildable
 	MaxHealth = 30000
 	InitialPenetrationResistance = 15
 	Components : ^/0/Components

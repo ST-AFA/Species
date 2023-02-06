@@ -8,7 +8,7 @@ Part : <fed_torpedo_launcher.rules>/Part
 	]
 	TypeCategories = [weapon, is_crewed]
 	ProhibitAbove = 0
-	//IsBuildable = false
+	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
 	Components : <fed_torpedo_launcher.rules>/Part/Components
 	{
 		PhotonTorpedoComponents

@@ -7,7 +7,7 @@ Part : <./Data/ships/terran/armor_tri/armor_tri.rules>/Part
 	[
 		[tristeel, 3]
 	]
-	//IsBuildable = false
+	IsBuildable = &<../ai_control.rules>/IsBuildable
 	MaxHealth = 3000
 	InitialPenetrationResistance = 9
 	Components : ^/0/Components
