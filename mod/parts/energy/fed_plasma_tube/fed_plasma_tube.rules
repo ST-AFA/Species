@@ -201,25 +201,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-			OperationalRoofDoodad
-			{
-				Layer = "roof_doodads"
-				DamageLevels
-				[
-					{
-						File = "roof_glows.png"
-						Size = [1, 3]
-					}
-					{
-						File = "roof_glows_33.png"
-						Size = [1, 3]
-					}
-					{
-						File = "roof_glows_66.png"
-						Size = [1, 3]
-					}
-				]
-			}
+			//OperationalRoofDoodad
+			//{
+			//	Layer = "roof_doodads"
+			//	DamageLevels
+			//	[
+			//		{
+			//			File = "roof_glows.png"
+			//			Size = [1, 3]
+			//		}
+			//		{
+			//			File = "roof_glows_33.png"
+			//			Size = [1, 3]
+			//		}
+			//		{
+			//			File = "roof_glows_66.png"
+			//			Size = [1, 3]
+			//		}
+			//	]
+			//}
 
 		}
 
