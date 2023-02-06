@@ -61,6 +61,9 @@ Parts
 	Warpnacelle_1x9 = "Warpnacell"
 	Warpnacelle_1x9_Icon = "Warpnacell 1x9"
 	Warpnacelle_1x9_Desc = "Delivers thrust and maneuverability to medium federation starships, like Centaur classes"
+	Impulse_3x2 = "Impulse engine"
+	Impulse_3x2_Icon = "Impulse engine"
+	Impulse_3x2_Desc = "An impulse engine or impulse drive was a common propulsion system used on starships used to create impulse power in order to achieve impulse speeds."
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
