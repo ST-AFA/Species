@@ -19,5 +19,12 @@ Part : <./Data/ships/terran/armor_1x2_wedge/armor_1x2_wedge.rules>/Part
 			AbsorbsResourceDrain = 3000
 			RecoveryRate = (&AbsorbsResourceDrain) * 0.3
 		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "dur_arm_1x2_wedge_bp.png"
+			Size = [1, 2]
+		}
 	}
 }

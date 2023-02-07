@@ -19,5 +19,12 @@ Part : <./Data/ships/terran/armor_tri/armor_tri.rules>/Part
 			AbsorbsResourceDrain = 1250
 			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
 		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "tri_arm_tri_bp.png"
+			Size = [1, 1]
+		}
 	}
 }
