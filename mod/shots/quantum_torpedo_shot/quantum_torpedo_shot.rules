@@ -65,31 +65,57 @@ Components
 		Health = 125
 		TargetCategory = "laser"
 	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue=10000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=18000; }
+	}
 
 	Hit
 	{
 		Type = PenetratingHit
 		SourcePartCollisionDelay = 1.5/30
+		Penetration = { BaseValue=15; BuffType=CaptainsRoomBuff; BuffMode=Multiply; }
+		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = Targetable
 
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
 
-		HitShield = &HitOperational
+		HitShield
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=10000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=18000; }
+				}
+				{
+					Type = Impulse
+					Impulse = 100
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
 		HitOperational
 		{
+			ReduceEffectsByPenetration = true
 			Offset = [-0.15, 0]
 
 			HitEffects
 			[
 				{
 					Type = Damage
-					Damage = 6000
-					Radius = 4
+					Damage = 0
+					DamagePool = DamagePool
 				}
 				{
 					Type = Impulse;
-					Impulse = 15;
+					Impulse = 100;
 				}
 			]
 
@@ -116,15 +142,17 @@ Components
 		}
 		HitStructural
 		{
+			ReduceEffectsByPenetration = true
+			
 			HitEffects
 			[
 				{
 					Type = Damage
-					Damage = 200
+					Damage = { BaseValue=2000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=10000; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 2.5;
+					Impulse = 24;
 				}
 			]
 
@@ -144,20 +172,28 @@ Components
 		}
 		PenetratingOperational
 		{
-			// No effect.
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=1000; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1800; }
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+				}
+				{
+					Type = Impulse
+					Impulse = 100
+				}
+			]
 		}
 		PenetratingStructural
 		{
 			// No effect.
 		}
-		FinishedPenetratingOperational
-		{
-			// No effect.
-		}
-		FinishedPenetratingStructural
-		{
-			// No effect.
-		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
 	}
 
 	Sprite
