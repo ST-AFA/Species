@@ -19,5 +19,12 @@ Part : <./Data/ships/terran/armor/armor.rules>/Part
 			AbsorbsResourceDrain = 3000
 			RecoveryRate = (&AbsorbsResourceDrain) * 0.3
 		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "dur_arm_bp.png"
+			Size = [1, 1]
+		}
 	}
 }
