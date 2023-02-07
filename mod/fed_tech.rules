@@ -55,6 +55,17 @@ Techs
 		Cost = 2000
 		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
 	}
+	// {
+		// Name = fed_impulse_engines_small
+		// ID = stafa.fed_warpnacelle_1x9
+		// NameKey = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/NameKey
+		// DescriptionKey = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/DescriptionKey
+		// Icon = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorIcon
+		// EditorGroup = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorGroup
+		// PartsUnlocked = [&<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/ID]
+		// Cost = 2000
+		// Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
+	// }
 	{
 		Name = fed_warpnacelles_medium
 		ID = stafa.fed_warpnacelle_2x6

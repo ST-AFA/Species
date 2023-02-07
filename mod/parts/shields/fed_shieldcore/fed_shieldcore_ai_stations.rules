@@ -1,13 +1,13 @@
 Part : <fed_shieldcore_switch.rules>/Part
 {
-	NameKey = "Parts/ShieldCore"
+	ID = "stafa.fed_shieldcore_ai_stations"
 	OtherIDs = []
 	Resources
 	[
 		[steel, 1]
 		[coil, 1]
 	]
-	IsBuildable = &<../ai_control.rules>/IsBuildable
+	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
 	Radius_XS = 15
 	Radius_S = 25
 	Radius_M = 35
