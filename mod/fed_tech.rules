@@ -52,20 +52,20 @@ Techs
 		Icon = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/ID]
-		Cost = 2000
+		Cost = 3000
 		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
 	}
-	// {
-		// Name = fed_impulse_engines_small
-		// ID = stafa.fed_warpnacelle_1x9
-		// NameKey = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/NameKey
-		// DescriptionKey = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/DescriptionKey
-		// Icon = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorIcon
-		// EditorGroup = &<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/EditorGroup
-		// PartsUnlocked = [&<parts/engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part/ID]
-		// Cost = 2000
-		// Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
-	// }
+	{
+		Name = fed_impulse_engines_small
+		ID = stafa.fed_impulse_3x2
+		NameKey = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/NameKey
+		DescriptionKey = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/DescriptionKey
+		Icon = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/EditorIcon
+		EditorGroup = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/ID, &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/ID]
+		Cost = 5000
+		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
+	}
 	{
 		Name = fed_warpnacelles_medium
 		ID = stafa.fed_warpnacelle_2x6
@@ -74,7 +74,7 @@ Techs
 		Icon = &<parts/engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part/ID]
-		Cost = 2500
+		Cost = 6000
 		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_warpnacelle_1x9]
 	}
 	{
@@ -85,7 +85,7 @@ Techs
 		Icon = &<parts/engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part/ID]
-		Cost = 3500
+		Cost = 12000
 		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_warpnacelle_2x6]
 	}
 	{
@@ -96,7 +96,7 @@ Techs
 		Icon = &<parts/engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6.rules>/Part/ID]
-		Cost = 3000
+		Cost = 24000
 		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_warpnacelle_2x9]
 	}
 	{
@@ -107,7 +107,7 @@ Techs
 		Icon = &<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part/ID]
-		Cost = 5000
+		Cost = 48000
 		Prerequisites = [stafa.fed_warpcore_large, stafa.fed_warpnacelle_3x6]
 	}
 	{
@@ -118,7 +118,7 @@ Techs
 		Icon = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/EditorIcon
 		EditorGroup = &<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part/ID]
-		Cost = 12000
+		Cost = 150000
 		Prerequisites = [stafa.fed_warpcore_med]
 	}
 	{
@@ -129,7 +129,7 @@ Techs
 		Icon = &<parts/weapons/fed_phaser_point_defense/fed_phaser_point_defense.rules>/Part/EditorIcon
 		EditorGroups = &<parts/weapons/fed_phaser_point_defense/fed_phaser_point_defense.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_phaser_point_defense/fed_phaser_point_defense.rules>/Part/ID]
-		Cost = 1250
+		Cost = 2500
 		Prerequisites = [stafa.fed_warpcore_small]
 	}
 	{
@@ -140,7 +140,7 @@ Techs
 		Icon = &<parts/weapons/fed_phaserbank/fed_phaserbank.rules>/Part/EditorIcon
 		EditorGroup = &<parts/weapons/fed_phaserbank/fed_phaserbank.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/weapons/fed_phaserbank/fed_phaserbank.rules>/Part/ID, &<parts/weapons/fed_phaserbank_controller/fed_phaserbank_controller.rules>/Part/ID]
-		Cost = 6000
+		Cost = 7500
 		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
 	}
 	{
@@ -162,7 +162,7 @@ Techs
 		Icon = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorIcon
 		EditorGroups = &<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part/ID]
-		Cost = 5000
+		Cost = 6000
 		Prerequisites = [stafa.fed_warpcore_med, stafa.fed_phaser_point_defense]
 	}
 	{
@@ -173,7 +173,7 @@ Techs
 		Icon = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part/EditorIcon
 		EditorGroups = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part/ID]
-		Cost = 10000
+		Cost = 15000
 		Prerequisites = [stafa.fed_warpcore_large]
 	}
 ]
