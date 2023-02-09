@@ -11,14 +11,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[coil2, 30]
 		[coil2, 6]
 	]
-	CrewSpeedFactor = 1
-	CrewCongestedSpeedFactor = .5	
+	Size = [1, 6]
+	MaxHealth = 5000
 	TypeCategories = [weapon, turret, uses_power, phaserbank, phaserbank_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, Phaser]
-	Size = [1, 6]
+	IsRotateable = true
+	IsFlippable = true
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5	
 	SelectionPriority = 1
-	SelectionTypeByRotation = true
-	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
 	ProhibitedBy : ^/0/ProhibitedBy [phaserbank]
