@@ -7,9 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Cannon_Deck_Desc"
 	Resources
 	[
-		[steel, 88]
+		[steel, 72]
 		[coil2, 30]
-		[coil2, 6]
+		[coil2, 4]
 	]
 	TypeCategories = [weapon, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, CaptainsRoomBuff]
