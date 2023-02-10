@@ -90,7 +90,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffAmount = 100%
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_power
 			}
 			BuffArea = [-1, 0, 1, 2]
@@ -103,7 +102,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffAmount = 100%
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_power
 			}
 			BuffArea = [1, 0, 1, 2]

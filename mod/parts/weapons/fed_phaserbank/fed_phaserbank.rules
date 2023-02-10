@@ -149,7 +149,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_controller
 			}
 		}
@@ -161,7 +160,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_controller
 			}
 		}
