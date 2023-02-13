@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[diamond, 1]
 	]
 	Cost = 5000
-	AIValue = &Cost
+	AIValue = 5
 	TypeCategories = [weapon, uses_power, is_crewed]
 	Size = [1, 3]
 	PhysicalRect = [0, 1, 1, 2]
