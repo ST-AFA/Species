@@ -1,0 +1,16 @@
+Part : <fed_impulse_6x3.rules>/Part
+{
+	ID = "stafa.fed_impulse_6x3_ai"
+	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
+	TypeCategories = [thruster, uses_power]
+	Size = [6, 2]
+	Components : ^/0/Components
+	{
+	Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints_ai.png"
+			Size = [6, 2]
+		}
+	}
+}

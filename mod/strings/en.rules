@@ -67,6 +67,9 @@ Parts
 	Impulse_3x2 = "Impulse engine"
 	Impulse_3x2_Icon = "Impulse engine"
 	Impulse_3x2_Desc = "An impulse engine or impulse drive was a common propulsion system used on starships used to create impulse power in order to achieve impulse speeds."
+	Impulse_6x3 = "Impulse engine"
+	Impulse_6x3_Icon = "Impulse 6x3"
+	Impulse_6x3_Desc = "An impulse engine or impulse drive was a common propulsion system used on starships used to create impulse power in order to achieve impulse speeds."
 	// Shields
 	ShieldCore = "Shieldcore"
 	ShieldCoreIcon = "Shieldcore"
