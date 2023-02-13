@@ -7,9 +7,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Phaser_Bank_Desc"
 	Resources
 	[
-		[steel, 88]
-		[coil2, 30]
-		[coil2, 6]
+		[steel, 12]
+		[coil2, 2]
+		[steel2, 6]
+		[diamond, 2]
 	]
 	Size = [1, 6]
 	MaxHealth = 5000
@@ -149,7 +150,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_controller
 			}
 		}
@@ -161,7 +161,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Criteria
 			{
-				Rot = 0
 				Category = phaserbank_controller
 			}
 		}
