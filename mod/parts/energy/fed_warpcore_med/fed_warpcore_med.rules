@@ -647,30 +647,46 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CrewLocation1
 		{
 			Type = CrewLocation
-			Location = [4, 2.95]
+			Location = [1.4, 1.4]
 			Rotation = 180d
 		}
 		CrewLocation2
 		{
 			Type = CrewLocation
-			Location = [4, 5.05]
+			Location = [2.6, 3.5]
+			Rotation = 0d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [4.5, 1.4]
+			Rotation = 180d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [3.4, 3.5]
 			Rotation = 0d
 		}
 		PartCrew
 		{
 			Type = PartCrew
-			Crew = 2
+			Crew = 3
 			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
 			PrerequisitesBeforeCrewing = [PowerToggle]
 			CrewDestinations
 			[
-				[4, 2.7]
-				[4, 5.2]
+				[1.4, 1.2]
+				[2.6, 3.7]
+				[4.5, 1.2]
+				[3.4, 3.7]
 			]
 			CrewLocations
 			[
 				CrewLocation1
 				CrewLocation2
+				CrewLocation3
+				CrewLocation4
 			]
 		}
 
