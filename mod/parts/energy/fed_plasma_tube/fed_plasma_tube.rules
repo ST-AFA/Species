@@ -8,8 +8,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Plasma_Tube_Desc"
 	Resources
 	[
-		[steel, 32]
-		[coil, 32]
+		[steel, 48]
+		[coil, 48]
 	]
 	Size = [1, 3]
 	MaxHealth = 4000
