@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[steel, 30]
 		[coil2, 8]
 	]
-	IsBuildable = &<../ai_control.rules>/IsBuildable
+	IsBuildable = &<../../misc/ai_control.rules>/IsBuildable
 	TypeCategories = [thruster, uses_power, impulse, is_crewed]
 	Size = [1, 2]
 	PhysicalRect = [0, 0, 1, 1]
