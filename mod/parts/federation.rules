@@ -8,8 +8,8 @@ Parts
 	&<weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part
 	&<weapons/fed_phaserbank_controller/fed_phaserbank_controller.rules>/Part
 	&<weapons/fed_phaserbank/fed_phaserbank.rules>/Part
-	&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
-	&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
+	//&<weapons/fed_phaserbank_modular/fed_phaserbank_modular.rules>/Part
+	//&<weapons/fed_phaserbank_emitter/fed_phaserbank_emitter.rules>/Part
 	// Rooms
 	&<rooms/fed_captains_room/fed_captains_room.rules>/Part
 	// Energy
