@@ -1,6 +1,6 @@
 ID = "st-afa.100_federation"
 Name = "ST-AFA - Federation"
-Version = 0.1.4
+Version = 0.1.5
 Author = "ST-AFA Mod-Team"
 CompatibleGameVersions = ["0.21.0"]
 ModifiesMultiplayer = true
@@ -11,7 +11,8 @@ Description = "Adds STAR TREK stuff to the game \n\n"\
 			  "- adds Engines\n"\
 			  "- adds Rooms\n"\
 			  "- adds Energy (WarpCore)\n"\
-			  "Requires STAR TREK - A FINAL ASSAULT RESOURCE MOD"
+			  "- adds shields\n"\
+			  "Requires STAR TREK - A FINAL ASSAULT RESOURCE MOD and STAR TREK - A FINAL ASSAULT BASE MOD"
 StringsFolder = "strings"
 
 
