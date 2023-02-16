@@ -12,6 +12,17 @@ Techs
 		Cost = 20000
 	}
 	{
+		Name = fed_ready_room
+		ID = stafa.fed_captains_room
+		NameKey = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/NameKey
+		DescriptionKey = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/DescriptionKey
+		Icon = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/EditorIcon
+		EditorGroup = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/ID]
+		Cost = 4500
+		Prerequisites = [stafa.fed_warpcore_small]
+	}
+	{
 		Name = fed_warpcore_med
 		ID = stafa.fed_warpcore_med
 		NameKey = &<parts/energy/fed_warpcore_med/fed_warpcore_med.rules>/Part/NameKey
@@ -62,9 +73,20 @@ Techs
 		DescriptionKey = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/DescriptionKey
 		Icon = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/EditorIcon
 		EditorGroup = &<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/EditorGroup
-		PartsUnlocked = [&<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/ID, &<parts/engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part/ID]
+		PartsUnlocked = [&<parts/engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part/ID]
 		Cost = 5000
 		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
+	}
+	{
+		Name = fed_impulse_engines_large
+		ID = stafa.fed_impulse_6x3
+		NameKey = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/NameKey
+		DescriptionKey = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/DescriptionKey
+		Icon = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/EditorIcon
+		EditorGroup = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/ID]
+		Cost = 12000
+		Prerequisites = [stafa.fed_impulse_3x2]
 	}
 	{
 		Name = fed_warpnacelles_medium
