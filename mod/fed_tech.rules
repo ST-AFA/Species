@@ -17,7 +17,7 @@ Techs
 		NameKey = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/NameKey
 		DescriptionKey = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/DescriptionKey
 		Icon = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/EditorIcon
-		EditorGroup = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/EditorGroup
+		EditorGroups = &<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/EditorGroups
 		PartsUnlocked = [&<parts/rooms/fed_captains_room/fed_captains_room.rules>/Part/ID]
 		Cost = 4500
 		Prerequisites = [stafa.fed_warpcore_small]
