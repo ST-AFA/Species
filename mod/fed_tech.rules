@@ -79,6 +79,17 @@ Techs
 	}
 	{
 		Name = fed_impulse_engines_large
+		ID = stafa.fed_impulse_4x2
+		NameKey = &<parts/engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part/NameKey
+		DescriptionKey = &<parts/engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part/DescriptionKey
+		Icon = &<parts/engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part/EditorIcon
+		EditorGroup = &<parts/engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part/EditorGroup
+		PartsUnlocked = [&<parts/engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part/ID]
+		Cost = 8000
+		Prerequisites = [stafa.fed_warpcore_small, stafa.fed_warpnacelle_1x6]
+	}
+	{
+		Name = fed_impulse_engines_advanced
 		ID = stafa.fed_impulse_6x3
 		NameKey = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/NameKey
 		DescriptionKey = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/DescriptionKey
@@ -86,7 +97,7 @@ Techs
 		EditorGroup = &<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/EditorGroup
 		PartsUnlocked = [&<parts/engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part/ID]
 		Cost = 12000
-		Prerequisites = [stafa.fed_impulse_3x2]
+		Prerequisites = [stafa.fed_impulse_4x2]
 	}
 	{
 		Name = fed_warpnacelles_medium

@@ -1,0 +1,34 @@
+Type = Beam
+BeamSprite
+{
+	Texture
+	{
+		File = "impulse.png"
+		SampleMode = Linear
+		MipLevels = max
+		UVMode = Clamp
+	}
+	_hotColor = [255, 15, 0, 255]
+	_coldColor = [255, 15, 0, 255]
+	_centerColor = [255, 15, 0, 255]
+	_thicknessOverIntensity = [1, 1]
+	_additionalBuffedIntensity = (&<./Data/ships/terran/engine_room/engine_room.rules>/Part/Components/BuffProvider/BuffAmount)
+	Shader = "impulse.shader"
+	Size = [0.6, 4]
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+Bucket = Upper4
+//RandomTimeOffset = [0, 1]
+IntensitySmoothSpeed = 0
+RotationSmoothSpeed = 0
+SpeedOverIntensity = 0
+MaxRotationSmoothDelta = 0d
+RotationSmoothSkewMode = false
