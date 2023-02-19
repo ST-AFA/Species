@@ -353,12 +353,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"floor_on.png"
-						]
+						File = "floor_on.png"
 						Size = [6, 6]
-						AnimationInterval = 0.095
+					}
+					{
+						File = "floor_on_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "floor_on_66.png"
+						Size = [6, 6]
 					}
 				]
 			}
@@ -441,28 +445,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [6, 6]
 					}
 					{
-						File = "roof.png"
-						NormalsFile = "roof_normals.png"
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
 						Size = [6, 6]
 					}
 					{
-						File = "roof.png"
-						NormalsFile = "roof_normals.png"
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
 						Size = [6, 6]
 					}
 				]
 			}
-			// OperationalRoofDoodad
-			// {
-				// Layer = "roof_doodads"
-				// DamageLevels
-				// [
-					// {
-						// File = "./Data/ships/terran/reactor_large/roof_glows.png"
-						// Size = [8, 8]
-					// }
-				// ]
-			// }
+			//OperationalRoofDoodad
+			//{
+			//	Layer = "roof_doodads"
+			//	DamageLevels
+			//	[
+			//	{
+			//		File = "roof_glows.png"
+			//		Size = [6,6]
+			//	}
+			//	]
+			//}
 			OperationalRoofLighting
 			{
 				Layer = "roof_lights_fancy"
