@@ -18,10 +18,10 @@ Parts
 	&<energy/fed_warpcore_large/fed_warpcore_large.rules>/Part
 	&<energy/fed_plasma_tube/fed_plasma_tube.rules>/Part
 	// Engines
-	&<engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part
-	&<engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part
 	&<engines/fed_warpnacelle_1x6/fed_warpnacelle_1x6.rules>/Part
 	&<engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part
+	&<engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part
+	&<engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part
 	&<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6.rules>/Part
 	&<engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part
 	&<engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part
