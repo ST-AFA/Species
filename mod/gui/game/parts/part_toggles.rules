@@ -53,6 +53,73 @@ PartToggles
 			}
 		]
 	}
+	{
+		ToggleID = "torpedo_type_ai"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Photon Torpedo.
+			{
+				ChoiceID = "torpedo_type_photon_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Photon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Quantum Torpedo.
+			{
+				ChoiceID = "torpedo_type_quantum_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Quantum"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Tricobalt Torpedo.
+			{
+				ChoiceID = "torpedo_type_tricobalt_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Tricobalt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tricobalt_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			
+			// Mine.
+			{
+				ChoiceID = "torpedo_type_mine_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Mine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "mine.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 	// core shield type
 	{
 		ToggleID = "CoreShield_type"

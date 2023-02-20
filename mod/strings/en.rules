@@ -90,6 +90,15 @@ Inputs
 		torpedo_type_photon = "Launcher: Photon Torpedos"
 		torpedo_type_quantum = "Launcher: Quantum Torpedos"
 		torpedo_type_tricobalt = "Launcher: Tricobalt Torpedos"
+		torpedo_type_photon_ai = "Launcher: Photon Torpedos"
+		torpedo_type_quantum_ai = "Launcher: Quantum Torpedos"
+		torpedo_type_tricobalt_ai = "Launcher: Tricobalt Torpedos"
+		torpedo_type_mine_ai = "Launcher: Cloaked Mines"
+		cid_CoreShield_XS = 
+		cid_CoreShield_S = 
+		cid_CoreShield_M = 
+		cid_CoreShield_L = 
+		cid_CoreShield_XL = 
 		phaser_arc_180	= "180° Firearc"
 		phaser_arc_90	= "90° Firearc"
 		phaser_arc_45	= "45° Firearc"
@@ -103,6 +112,7 @@ PartToggles
 	TorpedoType_Photon = "Photon Torpedo Launcher"
 	TorpedoType_Quantum = "Quantum Torpedo Launcher"
 	TorpedoType_Tricobalt = "Tricobalt Torpedo Launcher"
+	TorpedoType_Mine = "Cloaked Mine Launcher"
 	
 	btt_CoreShield_XS = "Small shield, best suited for ships like Nova classes"
 	btt_CoreShield_S = "Small shield, best suited for ships like Miranda classes"
