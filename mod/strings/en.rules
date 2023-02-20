@@ -94,11 +94,11 @@ Inputs
 		torpedo_type_quantum_ai = "Launcher: Quantum Torpedos"
 		torpedo_type_tricobalt_ai = "Launcher: Tricobalt Torpedos"
 		torpedo_type_mine_ai = "Launcher: Cloaked Mines"
-		cid_CoreShield_XS = 
-		cid_CoreShield_S = 
-		cid_CoreShield_M = 
-		cid_CoreShield_L = 
-		cid_CoreShield_XL = 
+		cid_CoreShield_XS = "Nova class shield"
+		cid_CoreShield_S = "Miranda class shield"
+		cid_CoreShield_M = "Intrepid class shield"
+		cid_CoreShield_L = "Galaxy class shield"
+		cid_CoreShield_XL = "Odyssey class shield"
 		phaser_arc_180	= "180° Firearc"
 		phaser_arc_90	= "90° Firearc"
 		phaser_arc_45	= "45° Firearc"
