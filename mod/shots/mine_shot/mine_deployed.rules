@@ -42,6 +42,24 @@ Components
 		{
 			HitEffects
 			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 300000
+					Radius = 30
+					Delay = .05
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 50%
+					FireChancePerNDamage = 100%
+					ImpulsePerNDamage = 40
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
 				// {
 					// Type = SpawnBullets
 					// Bullet = &<mine_shrapnel.rules>
