@@ -54,7 +54,7 @@ Components
 	{
 		Type = Targetable
 		Health = 800
-		TargetCategory = "cloaked"
+		TargetCategory = "cloaked_mine"
 		OnDeath = &~/Components/Hit/HitOperational
 	}
 

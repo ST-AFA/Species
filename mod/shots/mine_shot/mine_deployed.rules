@@ -33,7 +33,7 @@ Components
 	{
 		Type = DeathByEnemyProximity
 		Interval = .1
-		Range = 20
+		Range = 10
 		DetectsShips = true
 		DetectsBullets = false
 		StartDelay = .5
@@ -42,14 +42,14 @@ Components
 		{
 			HitEffects
 			[
-				{
-					Type = SpawnBullets
-					Bullet = &<mine_shrapnel.rules>
-					Count = 16
-					Distance = .6
-					Spread = [-15d, 15d]
-					InheritVelocity = true
-				}
+				// {
+					// Type = SpawnBullets
+					// Bullet = &<mine_shrapnel.rules>
+					// Count = 16
+					// Distance = .6
+					// Spread = [-15d, 15d]
+					// InheritVelocity = true
+				// }
 			]
 
 			MediaEffects
@@ -221,7 +221,7 @@ Components
 	{
 		Type = Targetable
 		Health = 800
-		TargetCategory = "cloaked"
+		TargetCategory = "cloaked_mine"
 		OnDeath = &~/Components/Hit/HitOperational
 	}
 
