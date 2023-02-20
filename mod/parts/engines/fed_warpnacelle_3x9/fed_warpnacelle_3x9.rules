@@ -201,11 +201,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [3, 9]
 					}
 					{
-						File = "floor.png"
+						File = "floor_33.png"
 						Size = [3, 9]
 					}
 					{
-						File = "floor.png"
+						File = "floor_66.png"
 						Size = [3, 9]
 					}
 				]
@@ -304,15 +304,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "./Data/ships/terran/storage_4x4/walls.png"
+						File = "walls.png"
 						Size = [3, 9]
 					}
 					{
-						File = "./Data/ships/terran/storage_4x4/walls_33.png"
+						File = "walls.png"
 						Size = [3, 9]
 					}
 					{
-						File = "./Data/ships/terran/storage_4x4/walls_66.png"
+						File = "walls.png"
 						Size = [3, 9]
 					}
 				]
@@ -323,18 +323,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "NacelleHuge_3x9roof.png"
-						NormalsFile = "NacelleHuge_3x9roof_normals.png"
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
 						Size = [3, 9]
 					}
 					{
-						File = "NacelleHuge_3x9roof.png"
-						NormalsFile = "NacelleHuge_3x9roof_normals.png"
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
 						Size = [3, 9]
 					}
 					{
-						File = "NacelleHuge_3x9roof.png"
-						NormalsFile = "NacelleHuge_3x9roof_normals.png"
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
 						Size = [3, 9]
 					}
 				]
@@ -359,6 +359,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+		}
+		AddonGraphics1
+		{
+			Type = Graphics
+			Location = [0.6, 0.6]
+			OperationalToggle = IsOperational
 			OperationalRoofLighting
 			{
 				Layer = "roof_lights_fancy"
@@ -366,9 +372,47 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "./Data/ships/common/light_blob.png"
-						Size = [3.7, 3.7]
-						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping.
-						VertexColor = [128*1.0, 255*1.0, 255*1.0]
+						Size = [1, 1]
+						Z = 2.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [120, 254, 255]
+					}
+				]
+			}
+		}
+		AddonGraphics2
+		{
+			Type = Graphics
+			Location = [1.5, 0.65]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1, 1]
+						Z = 2.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [120, 254, 255]
+					}
+				]
+			}
+		}
+		AddonGraphics3
+		{
+			Type = Graphics
+			Location = [2.4, 0.6]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1, 1]
+						Z = 2.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [120, 254, 255]
 					}
 				]
 			}
@@ -494,7 +538,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [1.5, 0.5]
+			Location = [1.5, 4.5]
 			Layer = "indicators"
 			Indicators
 			[
