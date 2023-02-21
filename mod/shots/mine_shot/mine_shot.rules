@@ -1,7 +1,7 @@
 ID = "stafa.cloaked_mine"
 Range = 150
 IdealRange = 50
-Speed = 100
+Speed = 50
 RandomRotation = true
 
 Components
@@ -21,7 +21,7 @@ Components
 	{
 		Type = ProximityAcceleration
 		Range = 15
-		Acceleration = -10
+		Acceleration = -5
 		AccelerateTowardsShips = false
 		AccelerateTowardsBullets = true
 		AccelerateTowardsBulletCategories = [mine]
@@ -61,7 +61,7 @@ Components
 	DeployDeath
 	{
 		Type = DeathBySpeed
-		MinSpeed = 30
+		MinSpeed = 15
 		FactorEffectsWith = Targetable
 
 		OnDeath

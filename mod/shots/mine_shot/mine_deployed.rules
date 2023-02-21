@@ -45,11 +45,11 @@ Components
 				{
 					Type = ExplosiveDamage
 					TotalDamage = 300000
-					Radius = 30
+					Radius = 20
 					Delay = .05
 					ExpandDuration = .8
 					ExpandStartRadius = 2
-					ExpandLoss = 50%
+					ExpandLoss = 75%
 					FireChancePerNDamage = 100%
 					ImpulsePerNDamage = 40
 					NDamage = 1000
@@ -72,8 +72,9 @@ Components
 
 			MediaEffects
 			[
-				&<./Data/shots/missile_he/particles/missile_he_hit.rules>
-				&<./Data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_flash_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_shockwave_large.rules>
 				&<particles/mine_range_ring.rules>
 
 				: /BASE_SOUNDS/AudioExterior
@@ -246,9 +247,9 @@ Components
 	Hit
 	{
 		Type = SimpleHit
-		ShieldCollisions = { Shields=false; }
+		ShieldCollisions = { Shields=true; }
 
-		HitShield {}
+		HitShield = &HitOperational
 
 		HitOperational
 		{
@@ -256,8 +257,9 @@ Components
 
 			MediaEffects
 			[
-				&<./Data/shots/missile_he/particles/missile_he_hit.rules>
-				&<./Data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_flash_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_shockwave_large.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
