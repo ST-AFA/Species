@@ -86,6 +86,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 		
+		BatteryProducer
+		{
+			Type = ResourceConverter
+			ToStorage = BatteryStorage
+			ToQuantity = 50
+			Interval = .5
+		}
 		BatteryStorage
 		{
 			Type = ResourceStorage
