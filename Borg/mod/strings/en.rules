@@ -1,0 +1,75 @@
+__Name = "English"
+__DebugOnly = false
+
+Parts
+{
+	// Weapons
+
+	// Shields
+	ShieldCore = "Shieldcore"
+	ShieldCoreIcon = "Shieldcore"
+	ShieldCoreDesc = "Central shieldcore that should guard all sides of a starship independently."
+}
+
+Inputs
+{
+	PartTriggers
+	{
+		
+	}
+	PartToggles
+	{
+		torpedo_type_photon = "Launcher: Photon Torpedos"
+		torpedo_type_quantum = "Launcher: Quantum Torpedos"
+		torpedo_type_tricobalt = "Launcher: Tricobalt Torpedos"
+		torpedo_type_photon_ai = "Launcher: Photon Torpedos"
+		torpedo_type_quantum_ai = "Launcher: Quantum Torpedos"
+		torpedo_type_tricobalt_ai = "Launcher: Tricobalt Torpedos"
+		torpedo_type_mine_ai = "Launcher: Cloaked Mines"
+		cid_CoreShield_XS = "Nova class shield"
+		cid_CoreShield_S = "Miranda class shield"
+		cid_CoreShield_M = "Intrepid class shield"
+		cid_CoreShield_L = "Galaxy class shield"
+		cid_CoreShield_XL = "Odyssey class shield"
+		phaser_arc_180	= "180° Firearc"
+		phaser_arc_90	= "90° Firearc"
+		phaser_arc_45	= "45° Firearc"
+		fire_left	= "Fire to the left"
+		fire_right	= "Fire to the right"
+	}
+}
+
+PartToggles
+{
+	TorpedoType_Photon = "Photon Torpedo Launcher"
+	TorpedoType_Quantum = "Quantum Torpedo Launcher"
+	TorpedoType_Tricobalt = "Tricobalt Torpedo Launcher"
+	TorpedoType_Mine = "Cloaked Mine Launcher"
+	
+	btt_CoreShield_XS = "Small shield, best suited for ships like Nova classes"
+	btt_CoreShield_S = "Small shield, best suited for ships like Miranda classes"
+	btt_CoreShield_M = "Medium shield, best suited for ships like Intrepid classes"
+	btt_CoreShield_L = "Big shield, best suited for ships like Galaxy classes"
+	btt_CoreShield_XL = "Huge shield, best suited for ships like Odyssey classes"
+
+	Phaser_arc_180_Tooltip	= "180° Firearc | Normal damage"
+	Phaser_arc_90_Tooltip	= "90° Firearc | High damage"
+	Phaser_arc_45_Tooltip	= "45° Firearc | Highest damage"
+
+	Fire_Left_Tooltip	= "Fire to the left (Based on Part direction)"
+	Fire_Right_Tooltip	= "Fire to the right (Based on Part direction)"
+}
+
+Stats
+{
+	WeaponBuffFmt = "<white>Weapon-Buff:</white> <good>+{0:0} %</good>"
+}
+
+StatCategories
+{
+	PhaserBolt = "Phaser pulse"
+	TorpedoLauncher = "Torpedo Launcher"
+	QuantumTorpedoLauncher = "Quantum Torpedo Launcher"
+	TricobaltTorpedoLauncher = "Tricobalt Torpedo Launcher"
+	Weapon = "Weapon"
+}

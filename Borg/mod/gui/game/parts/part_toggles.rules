@@ -1,0 +1,258 @@
+PartToggles
+[
+	// Torpedo type
+	{
+		ToggleID = "torpedo_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Photon Torpedo.
+			{
+				ChoiceID = "torpedo_type_photon"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Photon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Quantum Torpedo.
+			{
+				ChoiceID = "torpedo_type_quantum"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Quantum"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Tricobalt Torpedo.
+			{
+				ChoiceID = "torpedo_type_tricobalt"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Tricobalt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tricobalt_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	{
+		ToggleID = "torpedo_type_ai"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Photon Torpedo.
+			{
+				ChoiceID = "torpedo_type_photon_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Photon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Quantum Torpedo.
+			{
+				ChoiceID = "torpedo_type_quantum_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Quantum"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Tricobalt Torpedo.
+			{
+				ChoiceID = "torpedo_type_tricobalt_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Tricobalt"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tricobalt_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			
+			// Mine.
+			{
+				ChoiceID = "torpedo_type_mine_ai"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Mine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "mine.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// core shield type
+	{
+		ToggleID = "CoreShield_type"
+		Style = Popout
+		ShowInEditor = true
+		SortOrder = 3
+		Choices
+		[
+			{
+				ChoiceID = "cid_CoreShield_XS"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_XS"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XS.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "cid_CoreShield_S"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_S"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_S.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "cid_CoreShield_M"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_M"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_M.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "cid_CoreShield_L"
+				Mode = 3
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_L"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_L.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "cid_CoreShield_XL"
+				Mode = 4
+				ButtonToolTipKey = "PartToggles/btt_CoreShield_XL"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_XL.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Phaser Bank Arc
+	{
+		ToggleID = "phaser_bank_arc"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// 180°
+			{
+				ChoiceID = "phaser_arc_180"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/Phaser_arc_180_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_180.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 90°
+			{
+				ChoiceID = "phaser_arc_90"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/Phaser_arc_90_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_90.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// 45°
+			{
+				ChoiceID = "phaser_arc_45"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/Phaser_arc_45_Tooltip"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "phaser_45.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+
+	}
+]
