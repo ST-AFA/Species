@@ -1,7 +1,7 @@
-# Star Trek Federation
-![Logo](https://github.com/ST-AFA/Federation/blob/main/mod/logo.png)
+# Star Trek Species
+![Logo](https://github.com/ST-AFA/.image/blob/main/mod/logo.png)
 
-The Federation Faction Mod add Federation as a ingame Faction
+Species
 
 Mod [Folder](https://github.com/ST-AFA/Federation/tree/main/mod)
 Contains the mod
