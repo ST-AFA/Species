@@ -1,0 +1,30 @@
+Part : <./Data/ships/terran/armor_wedge/armor_wedge.rules>/Part
+{
+	ID = stafa.borg_armor_wedge
+	OtherIDs = []
+	EditorGroup = "Borg"
+	Resources
+	[
+		[tristeel, 5]
+	]
+	IsBuildable = &<../ai_control.rules>/IsBuildable
+	MaxHealth = 30000
+	InitialPenetrationResistance = 25
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 2500
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "tri_arm_wedge_bp.png"
+			Size = [1, 1]
+		}
+	}
+}

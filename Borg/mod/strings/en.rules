@@ -5,10 +5,16 @@ Parts
 {
 	// Weapons
 
-	// Shields
-	ShieldCore = "Shieldcore"
-	ShieldCoreIcon = "Shieldcore"
-	ShieldCoreDesc = "Central shieldcore that should guard all sides of a starship independently."
+	// Energy
+	Borgcore_small = "Small Borgcore"
+	Borgcore_small_Icon = "Small Borgcore"
+	Borgcore_small_Desc = "Provides enough energy to compatible systems in a huge radius for small ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Borgcore_med = "Medium Borgcore"
+	Borgcore_med_Icon = "Medium Borgcore"
+	Borgcore_med_Desc = "Provides enough energy to compatible systems in a huge radius for medium ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
+	Borgcore_large = "Large Borgcore"
+	Borgcore_large_Icon = "Large Borgcore"
+	Borgcore_large_Desc = "Provides enough energy to compatible systems in a huge radius for huge ships and is able to provide warp speed. The warpcore consumes antimatter and dilithium crystals to work properly."
 }
 
 Inputs

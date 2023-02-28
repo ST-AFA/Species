@@ -14,11 +14,11 @@ Actions
 	//******************** FUNCTIONS ********************
 
 	//******************** TECHS ********************
-	{
-		Action = AddMany
-		AddTo = "<modes/career/techs.rules>/Techs"
-		ManyToAdd = &<borg_tech.rules>/Techs
-	}
+	//{
+	//	Action = AddMany
+	//	AddTo = "<modes/career/techs.rules>/Techs"
+	//	ManyToAdd = &<borg_tech.rules>/Techs
+	//}
 	
 	//******************** PARTS ********************
 	{
@@ -31,22 +31,5 @@ Actions
 	//******************** RESOURCES ********************
 
 	//******************** UI ********************
-	{
-		Action = AddMany
-		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
-		ManyToAdd = &<gui/game/parts/part_toggles.rules>/PartToggles
-	}
-
-	{
-		Action = Add
-		AddTo = "<./Data/ships/base_ship.rules>/Blueprints/DrawProhibitedZoneCategories"
-		ToAdd = phaserbank
-	}
-
-	{
-		Action = Overrides
-		OverrideIn = "<./Data/gui/game/indicators/indicators.rules>"
-		Overrides = &<gui/game/indicators/indicators.rules>
-	}
 
 ]

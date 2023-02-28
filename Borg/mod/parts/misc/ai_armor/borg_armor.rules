@@ -1,0 +1,30 @@
+Part : <./Data/ships/terran/armor/armor.rules>/Part
+{
+	ID = stafa.borg_armor
+	OtherIDs = []
+	EditorGroup = "Borg"
+	Resources
+	[
+		[tristeel, 5]
+	]
+	IsBuildable = &<../ai_control.rules>/IsBuildable
+	MaxHealth = 60000
+	InitialPenetrationResistance = 35
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 5000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.5
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "tri_arm_bp.png"
+			Size = [1, 1]
+		}
+	}
+}

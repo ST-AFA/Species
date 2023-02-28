@@ -1,0 +1,16 @@
+Parts
+[	
+    // Energy
+	&<energy/borg_core_small/borg_core_small.rules>/Part
+	&<energy/borg_core_med/borg_core_med.rules>/Part
+	&<energy/borg_core_large/borg_core_large.rules>/Part
+	
+	&<engines/borg_engine/borg_engine.rules>/Part
+
+    &<misc/ai_armor/borg_armor.rules>/Part
+	&<misc/ai_armor/borg_armor_tri.rules>/Part
+	&<misc/ai_armor/borg_armor_wedge.rules>/Part
+	&<misc/ai_armor/borg_armor1x2_wedge.rules>/Part
+	&<misc/ai_armor/borg_armor1x3_wedge.rules>/Part
+	&<misc/ai_armor/borg_armor2x1.rules>/Part
+]

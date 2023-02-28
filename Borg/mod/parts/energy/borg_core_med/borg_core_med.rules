@@ -1,0 +1,836 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Borgcore_med"
+	IconNameKey = "Parts/Borgcore_med_Icon"
+	ID = "stafa.borg_core_med"
+	EditorGroup = "Borg"
+	DescriptionKey = "Parts/Borgcore_med_Desc"
+	Resources
+	[
+		[steel, 120]
+		[coil2, 80]
+		[enriched_uranium, 24]
+		[antimatter, 4]
+	]
+	CrewSpeedFactor = .8
+	CrewCongestedSpeedFactor = .5
+	AIValueFactor = 10
+	Size = [6, 6]
+	IsRotateable = false
+	SelectionPriority = 0
+	SelectionTypeID = "reactors"
+	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [reactor, ftl, is_crewed, uses_antimatter, borgcore]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	CreatePartPerTileWhenDestroyed = ""
+	IgnoreRotationForMirroredSelection = true
+	BlockedTravelCells
+	[
+		[2, 1]	// top glass
+		[3, 1]
+		[1, 3]	// left glass
+		[1, 4]
+		[4, 3]	// right glass
+		[4, 4]
+		[1, 2]	// warpcore
+		[2, 2]
+		[3, 2]
+		[4, 2]
+		[5, 2]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [2, 3]
+			Value = [Right]
+		}
+		{
+			Key = [3, 3]
+			Value = [Left]
+		}
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[1, -1]
+		[2, -1]
+		[3, -1]
+		[4, -1]
+		[5, -1]
+		[0, 6]
+		[1, 6]
+		[2, 6]
+		[3, 6]
+		[4, 6]
+		[5, 6]
+	]
+	ForceManhattanPathInPart = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [72, 72]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			CommandPoints = 40
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 20000
+			StartingResources = 20000
+			//SuppliesResources = true
+			//MinResourcesPickUp = 3000
+			//MaxResourcesPickUp = 3000
+			//InitPickUp = 2001
+			//PickUpRate = 1000 / 1.0
+			//ExpectedResourceGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
+			//ToggleOnResources = 6001
+			//ToggleOffResources = 6000
+		}
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage, FtlBatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [BuffProvider]
+				ComponentID = BatteryStorage
+			}
+			AddMode = DistributeEvenly //PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		AntimatterStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = antimatter
+			MaxResources = 2
+			StartingResources = 0
+            GridRect = [5,5,1,1]
+            Layer = "structure"
+            SpriteInset = [12/64, 4/64, 6/64, 11/64]
+		}
+		AntimatterSplitter
+		{
+			Type = InlineResourceConverter
+			ResourceType = antimatter
+			FromStorage = AntimatterStorage
+			FromQuantity = 1
+			ToQuantity = 1000
+		}
+		AntimatterConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = antimatter
+			Storage = AntimatterStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			//OperationalToggle = IsOperational
+			From
+			[
+				{
+					Storage = AntimatterSplitter
+					Quantity = 1
+				}
+			]
+			ToStorage = BatteryStorage
+			ToQuantity = 275
+			Interval = .05
+		}
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [3, 3]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../../../sounds/create_energy.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+		BatteryProducer
+		{
+			Type = ResourceConverter
+			ToStorage = BatteryStorage
+			ToQuantity = 1000
+			Interval = .2222 / 3
+		}
+		// BatteryConsumer
+		// {
+			// Type = ResourceConsumer
+			// ResourceType = battery
+			// Storage = CombinedBatteryStorage
+			// DefaultPriority = 0
+			// ResupplyThreshold = 1000
+		// }
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 800
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = AntimatterPower
+			BuffAmount = 100%
+			GridDistance = 100
+		}
+		EnergySubstation
+		{
+			Type = ResourceConverter
+			FromStorage = BatteryStorage
+			FromQuantity = 500
+			ToStorage = CombinedBatteryStorage
+			ToQuantity = 500
+			Interval = 0.1
+			MinFromQuantityForConversion = 501
+		}
+		
+		
+		// Hyperdrive
+		HyperiumStorage
+		{
+			Type = ResourceStorage
+			ResourceType = hyperium
+			MaxResources = 100
+			UITileRect = [0, 0, 1, 1]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = true
+		}
+		HyperiumConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = hyperium
+			Storage = HyperiumStorage
+			DefaultPriority = &/PRIORITIES/Utility_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		FtlBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 12000
+			StartingResources = &MaxResources
+			//InitToMaxResources = 0
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		// FtlBatteryConsumer
+		// {
+			// Type = ResourceConsumer
+			// ResourceType = battery
+			// Storage = FtlBatteryStorage
+			// DefaultPriority = &/PRIORITIES/Ftl_Supply
+			// OperationalToggle = FtlDrive
+			// AllowNonOperationalMinPriorityDelivery = false
+			// OverrideExclusiveCrewAssignment = true
+		// }
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = FtlDrive
+			ShowProgressFor = FtlBatteryStorage
+		}
+
+		FtlBatteryStorageCharging
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [FtlBatteryStorage]
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+		}
+		FtlBatteryStorageFull
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [FtlBatteryStorage]
+			ToggleOnResources = 12000
+			ToggleOffResource = 11999
+		}
+
+		FtlDrive
+		{
+			Type = FtlDrive
+			OperationalToggle = PowerToggle
+			PowerStorage = FtlBatteryStorage
+			FuelStorage = HyperiumStorage
+			SpinDownDuration = 5
+			JumpEfficiency = 80%
+			JumpEfficiencyDistanceRange = [10, 45]
+
+			JumpOutMediaEffects
+			[
+				&<./Data/ships/common/particles/ftl_lightning.rules>
+				// TODO: Fix size an spacing
+			]
+			JumpOutGateMediaEffects
+			[
+				&<./Data/ships/common/particles/ftl_gate_lightning_out.rules>
+
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "../../../sounds/warp_speed_in.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
+			JumpInMediaEffects
+			[
+				: &<./Data/ships/common/particles/ftl_lightning.rules>
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+				}
+			]
+			JumpInGateMediaEffects
+			[
+				: &<./Data/ships/common/particles/ftl_gate_lightning_in.rules>
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+				}
+
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
+					Sound = "../../../sounds/warp_speed_out.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [3, 3]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor_on.png"
+						Size = [6, 6]
+					}
+					{
+						File = "floor_on_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "floor_on_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"reactor_on_1.png"
+							"reactor_on_2.png"
+							"reactor_on_3.png"
+						]
+						Size = [6, 6]
+						AnimationInterval = 0.3
+					}
+					// {
+						// AnimationFiles
+						// [
+							// "reactor_on_33_1.png"
+							// "reactor_on_33_2.png"
+							// "reactor_on_33_3.png"
+						// ]
+						// Size = [6, 6]
+						// AnimationInterval = 0.3
+					// }
+					// {
+						// AnimationFiles
+						// [
+							// "reactor_on_66_1.png"
+							// "reactor_on_66_2.png"
+							// "reactor_on_66_3.png"
+						// ]
+						// Size = [6, 6]
+						// AnimationInterval = 0.3
+					// }
+				]
+			}
+			//NonOperationalDoodad = &OperationalDoodad
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [6, 6]
+					}
+					//{
+					//	File = "walls_33.png"
+					//	Size = [8, 8]
+					//}
+					//{
+					//	File = "walls_66.png"
+					//	Size = [8, 8]
+					//}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [6, 6]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [6, 6]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+				{
+					File = "roof_glows.png"
+					Size = [6,6]
+				}
+				]
+			}
+			//OperationalRoofLighting
+			//{
+			//	Layer = "roof_lights_fancy"
+			//	DamageLevels
+			//	[
+			//		{
+			//			File = "./Data/ships/common/light_blob.png"
+			//			Size = [2, 2]
+			//			Z = 5.0 // Controls the "height" of the light for the purposes of normal mapping.
+			//			VertexColor = [0, 150, 255] //[180*1.0, 255*1.0, 77*1.0]
+			//		}
+			//	]
+			//}
+		}
+
+		FancyGraphics1
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [2, 2]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [0, 150, 255] //[180*1.0, 255*1.0, 77*1.0]
+					}
+				]
+			}
+		}
+		FancyGraphics2
+		{
+			Type = Graphics
+			Location = [4, 2]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [2, 2]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [0, 150, 255] //[180*1.0, 255*1.0, 77*1.0]
+					}
+				]
+			}
+		}
+		FancyGraphics3
+		{
+			Type = Graphics
+			Location = [2, 4]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [2, 2]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [0, 150, 255] //[180*1.0, 255*1.0, 77*1.0]
+					}
+				]
+			}
+		}
+		FancyGraphics4
+		{
+			Type = Graphics
+			Location = [4, 4]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [2, 2]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [0, 150, 255] //[180*1.0, 255*1.0, 77*1.0]
+					}
+				]
+			}
+		}
+
+		ReactorHum
+		{
+			Type = ContinuousEffects
+			Location = [3, 3]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../../../sounds/tng_hum_clean.wav"
+					Volume = .5
+					Speed = .5
+					MaxConcurrent = 1
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						ExteriorVolume = .5
+					}
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [3, 3]
+			ResourceStorage = BatteryStorage
+			Layer = "doors"
+			Round = Down
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries2.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries3.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries4.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries5.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries6.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries7.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries8.png"
+					Size = [6, 6]
+				}
+				{
+					File = "batteries8.png"	// this is to avoid flickering of eigth battery
+					Size = [6, 6]
+				}
+			]
+		}
+		
+		AntimatterSprites
+		{
+			Type = ResourceSprites
+			Location = [3, 3]
+			ResourceStorage = AntimatterStorage
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"antimatter0.png"
+					]
+					Size = [6, 6]
+					AnimationInterval = 0.1
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"antimatter0.png"
+					]
+					Size = [6, 6]
+					AnimationInterval = 0.1
+					ClampAnimation = true
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [3, 3]
+
+			MediaEffects
+			[
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_explode_flash_large.rules>
+				&<./Data/ships/terran/reactor_large/particles/reactor_shockwave_large.rules>
+				&<./Data/common_effects/particles/explosions/huge_part_explode_debris.rules>
+				&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/ships/terran/reactor_small/destroyed.wav"
+					Volume = 2
+					Speed = .5
+					SpeedVariation = .25 * (&Speed)
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .75
+					Duration = 4
+				}
+			]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2000000
+					Radius = 50
+					Delay = .05
+					ExpandDuration = .35
+					ExpandStartRadius = 6
+					ExpandLoss = 50%
+					FireChancePerNDamage = 100%
+					ImpulsePerNDamage = 40
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 300000
+					Radius = 10
+					Delay = .05
+					ExpandDuration = .2
+					ExpandStartRadius = 4
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+		}
+		
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [1.4, 1.4]
+			Rotation = 180d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [2.6, 3.5]
+			Rotation = 0d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [4.5, 1.4]
+			Rotation = 180d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [3.4, 3.5]
+			Rotation = 0d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 3
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			CrewDestinations
+			[
+				[1.4, 1.2]
+				[2.6, 3.7]
+				[4.5, 1.2]
+				[3.4, 3.7]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [3, 3]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No antimatter.
+				{
+					Toggle = AntimatterStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [6, 6]
+		}
+	}
+
+	Stats
+	{
+		//PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+}
