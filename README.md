@@ -1,5 +1,5 @@
 # Star Trek Species
-![Logo](https://github.com/ST-AFA/.image/blob/main/mod/logo.png)
+![Logo](https://raw.githubusercontent.com/ST-AFA/Factions/main/.images/Faction-Banner.png)
 
 Species
 
