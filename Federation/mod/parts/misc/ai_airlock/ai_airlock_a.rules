@@ -41,7 +41,7 @@ Part : <./Data/ships/terran/airlock/airlock.rules>/Part
 			InitToMaxResources = 0
 		}
 
-		ResourceConverter
+		AntimatterCreator
 		{
 			Type = ResourceConverter
 			OperationalToggle = PowerToggle
@@ -56,6 +56,34 @@ Part : <./Data/ships/terran/airlock/airlock.rules>/Part
 			ToStorage = AntimatterStorage
 			ToQuantity = 1
 			Interval = 20
+			DelayAfterTrigger = 5
+		}
+		
+		DetonateEffects
+		{
+			Type = TriggeredEffects
+			Trigger = AntimatterCreator
+			
+			MediaEffects
+			[
+				//&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+				//&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+			]
+			
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Delay = 5
+					Filter
+					{
+						Friendlies = false
+						IgnoreInvulnerability = true
+					}
+				}
+			]
 		}
 	}
 }
