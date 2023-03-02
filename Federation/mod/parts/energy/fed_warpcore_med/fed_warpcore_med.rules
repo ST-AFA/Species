@@ -12,6 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 56]
 		[processor, 7]
 		[antimatter, 7]
+		[dilithium, 4]
 	]
 	CrewSpeedFactor = .8
 	CrewCongestedSpeedFactor = .5

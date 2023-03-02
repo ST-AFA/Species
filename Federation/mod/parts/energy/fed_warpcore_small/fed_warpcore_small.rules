@@ -12,6 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 40]
 		[processor, 5]
 		[antimatter, 5]
+		[dilithium, 3]
 	]
 	AIValueFactor = 10
 	Size = [4, 4]
