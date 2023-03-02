@@ -9,8 +9,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 120]
 		[coil2, 80]
-		[enriched_uranium, 24]
-		[antimatter, 4]
+		[tristeel, 40]
+		[processor, 5]
+		[antimatter, 5]
 	]
 	AIValueFactor = 10
 	Size = [4, 4]
@@ -137,7 +138,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = antimatter
 			FromStorage = AntimatterStorage
 			FromQuantity = 1
-			ToQuantity = 1000
+			ToQuantity = 10000
 		}
 		AntimatterConsumer
 		{
@@ -160,8 +161,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			ToStorage = BatteryStorage
-			ToQuantity = 275
-			Interval = .1
+			ToQuantity = 375
+			Interval = .075
 		}
 		ConvertEffects
 		{
@@ -213,11 +214,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceConverter
 			FromStorage = BatteryStorage
-			FromQuantity = 250
+			FromQuantity = 375
 			ToStorage = CombinedBatteryStorage
-			ToQuantity = 250
-			Interval = 0.1
-			MinFromQuantityForConversion = 251
+			ToQuantity = 375
+			Interval = 0.075
+			MinFromQuantityForConversion = 376
 		}
 		
 		
