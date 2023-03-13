@@ -13,7 +13,19 @@ Part : <fed_shieldcore_switch.rules>/Part
 	Radius_M = 35
 	Radius_L = 45
 	Radius_XL = 60
-	
+	ThrusterForce = 6000
+	ThrustIncreaseTime = 0
+	ThrustRecoveryTime = 0
+	FuelUsage = 100
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_ai.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
 	Components : ^/0/Components
 	{
 		ProgressBar
@@ -26,7 +38,36 @@ Part : <fed_shieldcore_switch.rules>/Part
 			FullColor = [0, 0, 255]
 			Height = 10
 		}
+
+		ThrusterProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = ThrusterBatteryStorage
+			LowColor = [255, 0, 0]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 255, 0]
+			Height = 10
+		}
 		
+		ThrusterBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 10000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = ThrusterBatteryStorage
+			DefaultPriority = &/PRIORITIES/Thruster_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = PowerToggle
+		}
+
 		CombinedBatteryStorage
 		{
 			Type = MultiResourceStorage
@@ -1962,6 +2003,73 @@ Part : <fed_shieldcore_switch.rules>/Part
 //			]
 //		}
 
+		ThrusterBottom
+		{
+			Type = Thruster
+			Location = [2, 4] // Relative to upper-left corner of unrotated part.
+			Rotation = 90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = ThrusterBatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		ThrusterRight
+		{
+			Type = Thruster
+			Location = [4, 2] // Relative to upper-left corner of unrotated part.
+			Rotation = 0d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = ThrusterBatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		ThrusterLeft
+		{
+			Type = Thruster
+			Location = [0, 2] // Relative to upper-left corner of unrotated part.
+			Rotation = 180d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = ThrusterBatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		ThrusterTop
+		{
+			Type = Thruster
+			Location = [2, 0] // Relative to upper-left corner of unrotated part.
+			Rotation = 270d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = ThrusterBatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
 		OperationEffects
 		{
 			Type = ToggleEffects
