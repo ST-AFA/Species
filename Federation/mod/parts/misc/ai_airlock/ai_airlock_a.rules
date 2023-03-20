@@ -50,40 +50,54 @@ Part : <./Data/ships/terran/airlock/airlock.rules>/Part
 			    {
 			        Storage = BatteryStorage
 			        Quantity = 40
-			        MinQuantityForConversion = 1
+			        MinQuantityForConversion = 41
 			    }
 			]
 			ToStorage = AntimatterStorage
 			ToQuantity = 1
 			Interval = 20
-			DelayAfterTrigger = 5
 		}
 		
 		DetonateEffects
 		{
 			Type = TriggeredEffects
 			Trigger = AntimatterCreator
+			DelayAfterTrigger = 19
+			Delay = 19
 			
-			MediaEffects
-			[
-				//&<./Data/common_effects/particles/explosions/med_part_explode.rules>
-				//&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
-				&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
-			]
-			
-			HitEffects
-			[
-				{
-					Type = Damage
-					Damage = 999999
-					Delay = 5
-					Filter
+			HitOperational
+			{
+				MediaEffects
+				[
+					&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+					&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+					&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+				]
+				
+				HitEffects
+				[
 					{
-						Friendlies = false
-						IgnoreInvulnerability = true
+						Type = Damage
+						Damage = 999999
+						//Delay = 19
+						Filter
+						{
+							OperationalHealth = true
+							Friendlies = false
+							IgnoreInvulnerability = true
+						}
 					}
-				}
-			]
+				]
+			}
+			HitStructural = &HitOperational
+			
+			HitFriendly
+			{
+				MediaEffects
+				[
+					&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+				]
+			}
 		}
 	}
 }

@@ -386,30 +386,39 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 							"reactor_on_1.png"
 							"reactor_on_2.png"
 							"reactor_on_3.png"
+							"reactor_on_4.png"
+							"reactor_on_5.png"
+							"reactor_on_6.png"
 						]
 						Size = [6, 6]
 						AnimationInterval = 0.3
 					}
-					// {
-						// AnimationFiles
-						// [
-							// "reactor_on_33_1.png"
-							// "reactor_on_33_2.png"
-							// "reactor_on_33_3.png"
-						// ]
-						// Size = [6, 6]
-						// AnimationInterval = 0.3
-					// }
-					// {
-						// AnimationFiles
-						// [
-							// "reactor_on_66_1.png"
-							// "reactor_on_66_2.png"
-							// "reactor_on_66_3.png"
-						// ]
-						// Size = [6, 6]
-						// AnimationInterval = 0.3
-					// }
+					{
+						AnimationFiles
+						[
+							"reactor_on_33_1.png"
+							"reactor_on_33_2.png"
+							"reactor_on_33_3.png"
+							"reactor_on_33_4.png"
+							"reactor_on_33_5.png"
+							"reactor_on_33_6.png"
+						]
+						Size = [6, 6]
+						AnimationInterval = 0.3
+					}
+					{
+						AnimationFiles
+						[
+							"reactor_on_66_1.png"
+							"reactor_on_66_2.png"
+							"reactor_on_66_3.png"
+							"reactor_on_66_4.png"
+							"reactor_on_66_5.png"
+							"reactor_on_66_6.png"
+						]
+						Size = [6, 6]
+						AnimationInterval = 0.3
+					}
 				]
 			}
 			//NonOperationalDoodad = &OperationalDoodad
