@@ -7,8 +7,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Warpnacelle_2x9_Desc"
 	Resources
 	[
-		[steel, 175]
-		[coil, 175]
+		[steel, 640]
+		[coil2, 160]
+		[tristeel, 80]
+		[antimatter, 6]
 	]
 	TypeCategories = [thruster, uses_power, nacelle]
 	Size = [2, 9]
