@@ -1,0 +1,54 @@
+Parts
+[
+	//********** Klingon Empire ********
+	// Weapons
+	// &<weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon.rules>/Part
+	// &<weapons/fed_phaser_point_defense/fed_phaser_point_defense.rules>/Part
+	&<weapons/kli_disruptor_cannon/kli_disruptor_cannon.rules>/Part
+	&<weapons/kli_torpedolauncher/kli_torpedo_launcher.rules>/Part
+	// &<weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part
+	// &<weapons/fed_phaserbank_controller/fed_phaserbank_controller.rules>/Part
+	// &<weapons/fed_phaserbank/fed_phaserbank.rules>/Part
+	// Rooms
+	// &<rooms/fed_captains_room/fed_captains_room.rules>/Part
+	// Energy
+	// &<energy/fed_warpcore_small/fed_warpcore_small.rules>/Part
+	// &<energy/fed_warpcore_med/fed_warpcore_med.rules>/Part
+	// &<energy/fed_warpcore_large/fed_warpcore_large.rules>/Part
+	// &<energy/fed_plasma_tube/fed_plasma_tube.rules>/Part
+	// Engines
+	// &<engines/fed_warpnacelle_1x6/fed_warpnacelle_1x6.rules>/Part
+	// &<engines/fed_warpnacelle_1x9/fed_warpnacelle_1x9.rules>/Part
+	// &<engines/fed_warpnacelle_2x6/fed_warpnacelle_2x6.rules>/Part
+	// &<engines/fed_warpnacelle_2x9/fed_warpnacelle_2x9.rules>/Part
+	// &<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6.rules>/Part
+	// &<engines/fed_warpnacelle_3x9/fed_warpnacelle_3x9.rules>/Part
+	// &<engines/fed_impulse_3x2/fed_impulse_3x2.rules>/Part
+	// &<engines/fed_impulse_4x2/fed_impulse_4x2.rules>/Part	
+	// &<engines/fed_impulse_6x3/fed_impulse_6x3.rules>/Part	
+	// Shields
+	// &<shields/fed_shieldcore/fed_shieldcore_switch.rules>/Part
+	// Misc (basically AI Parts)
+	// &<engines/fed_impulse_1x2/fed_impulse_1x2.rules>/Part
+	// &<engines/fed_impulse_6x3/fed_impulse_6x3_ai.rules>/Part
+	// &<engines/fed_warpnacelle_3x6/fed_warpnacelle_3x6_special.rules>/Part
+	// &<weapons/fed_torpedolauncher/fed_torpedo_launcher_ai.rules>/Part
+	// &<weapons/fed_dual_phaser_cannon/fed_dual_phaser_cannon_station.rules>/Part
+	// &<shields/fed_shieldcore/fed_shieldcore_ai_stations.rules>/Part
+	// &<misc/ai_airlock/ai_airlock_a.rules>/Part
+	// &<misc/ai_airlock/ai_airlock_d.rules>/Part
+	// &<misc/ai_airlock/ai_airlock_t.rules>/Part
+	// &<misc/ai_armor/duranium_armor.rules>/Part
+	// &<misc/ai_armor/duranium_armor_tri.rules>/Part
+	// &<misc/ai_armor/duranium_armor_wedge.rules>/Part
+	// &<misc/ai_armor/duranium_armor1x2_wedge.rules>/Part
+	// &<misc/ai_armor/duranium_armor1x3_wedge.rules>/Part
+	// &<misc/ai_armor/duranium_armor2x1.rules>/Part
+	// &<misc/ai_armor/tritanium_armor.rules>/Part
+	// &<misc/ai_armor/tritanium_armor_tri.rules>/Part
+	// &<misc/ai_armor/tritanium_armor_wedge.rules>/Part
+	// &<misc/ai_armor/tritanium_armor1x2_wedge.rules>/Part
+	// &<misc/ai_armor/tritanium_armor1x3_wedge.rules>/Part
+	// &<misc/ai_armor/tritanium_armor2x1.rules>/Part
+	// &<misc/ai_power/reactor_small.rules>/Part
+]

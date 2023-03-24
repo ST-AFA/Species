@@ -1,0 +1,342 @@
+Components
+{
+	MissileStorage
+	{
+		Type = ResourceStorage
+		ResourceType = torpedo_part
+		MaxResources = 12
+		ToggleOnResources = 12
+		ToggleOffResources = 11
+		DelayBeforeReadyToUse = .5
+		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	Consumer
+	{
+		Type = ResourceConsumer
+		ResourceType = torpedo_part
+		Storage = MissileStorage
+		DefaultPriority = &/PRIORITIES/Weapon_Supply
+		OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [0, -.4]
+	}
+
+	MissilesPrereq
+	{
+		Type = MultiToggle
+		Toggles = [MissileStorage]
+		Mode = Any
+	}
+
+	Weapon
+	{
+		Type = TurretWeapon
+		Location = [1, 1]
+		Rotation = -90d
+		Emitter = Emitter
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 0 // Uses common reload timer.
+		FiringArc = 0d
+		TargetingArc = 200d
+		ValidArc = 200d
+		FireThresholdAngle = (&TargetingArc) / 2
+		RotateSpeed = 0d
+		AllowFireWithBlockedLOS = true
+		AIFirepowerRating = 4800
+		FirePermissionToggle = FirePermissionToggle
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+				EnableInDirectControlMode = true
+			}
+		]
+
+		BlueprintArcSprite
+		{
+			Texture = &/INDICATORS/WeaponArc
+			Size = [0, 1.5]
+			Color = [255, 0, 0, 63]
+		}
+		BlueprintArcRadius = 10
+		BlueprintArcSpriteSegments = 64
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+	FirePermissionToggle
+	{
+		Type = MultiToggle
+		Toggles = [CommonReloadTimerLong, FireModeToggle]
+		Mode = All
+	}
+
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = CommonReloadTimerLong
+		Invert = true
+	}
+
+	CommonReloadResetTrigger
+	{
+		Type = MultiTrigger
+		Triggers = [Weapon]
+	}
+
+	Emitter
+	{
+		Type = BulletEmitter
+		ChainedTo = Weapon
+		OperationalToggle = IsOperational
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		ResourceStorage = MissileStorage
+		ResourcesUsed = 12
+		Bullet = &<../../../../shots/tricobalt_torpedo_shot/tricobalt_torpedo_shot.rules>
+		TargetLeadPrediction = false
+		Recoil = 300
+	}
+
+	LaunchEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Weapon
+		Trigger = Weapon
+
+		MediaEffects
+		[
+			&<../particles/tricobalt_torpedo_shot.rules>
+			&<../particles/tricobalt_torpedo_flash.rules>
+
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "../../../../shots/tricobalt_torpedo_shot/tricobalt_torpedo_shot.wav"
+				Speed = 0.25
+				SpeedVariation = .1
+			}
+		]
+	}
+
+	External_Walls_Graphics
+	{
+		Type = Graphics
+		Location = [1, 1]
+		Walls
+		{
+			Layer = "external_walls"
+			DamageLevels
+			[
+				{
+					File = "external_walls.png"
+					NormalsFile = "external_walls_normals.png"
+					Size = [2, 3]
+				}
+				{
+					File = "external_walls_33.png"
+					NormalsFile = "external_walls_normals_33.png"
+					Size = [2, 3]
+				}
+				{
+					File = "external_walls_66.png"
+					NormalsFile = "external_walls_normals_66.png"
+					Size = [2, 3]
+				}
+			]
+		}
+	}
+
+	MissileSprites
+	{
+		Type = ResourceSprites
+		Location = [1, 1.6]
+		ResourceStorage = MissileStorage
+		Layer = "weapons"
+		HasZeroResourceSprite = true
+		ResourceLevels
+		[
+			{
+				File = "missile_0.png"
+				Offset = [0, 1]
+				Size = [2, 1]
+			}
+			{
+				File = "missile_1.png"
+				NormalsFile = "missile_normals_1.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_1.png"
+				NormalsFile = "missile_normals_1.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_1.png"
+				NormalsFile = "missile_normals_1.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_2.png"
+				NormalsFile = "missile_normals_2.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_2.png"
+				NormalsFile = "missile_normals_2.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_2.png"
+				NormalsFile = "missile_normals_2.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_2.png"
+				NormalsFile = "missile_normals_2.png"
+				Offset = [0, 0.5]
+				Size = [2, 2]
+			}
+			{
+				File = "missile_3.png"
+				NormalsFile = "missile_normals_3.png"
+				Size = [2, 3]
+			}
+			{
+				File = "missile_3.png"
+				NormalsFile = "missile_normals_3.png"
+				Size = [2, 3]
+			}
+			{
+				File = "missile_3.png"
+				NormalsFile = "missile_normals_3.png"
+				Size = [2, 3]
+			}
+			{
+				File = "missile_3.png"
+				NormalsFile = "missile_normals_3.png"
+				Size = [2, 3]
+			}
+			{
+				File = "missile_4.png"
+				NormalsFile = "missile_normals_4.png"
+				Size = [2, 3]
+			}
+		]
+	}
+
+	DestroyedEffects
+	{
+		Type = DeathEffects
+		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+		Location = [1, 2]
+
+		FactorHitEffectsWith = MissileStorage
+		HitEffects
+		[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 60000
+				Radius = 5
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				CrewKillChance = 50%
+				Filter
+				{
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
+				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 20000
+				Radius = 4
+				Delay = .05
+				Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
+					Crew = false
+				}
+			}
+		]
+	}
+
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [1, 2]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [1, 1]
+				}
+			}
+
+			// Out of missiles.
+			{
+				Toggle = MissileStorage
+				Delay = &<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerLong/Duration
+				AtlasSprite
+				{
+					File =  &/INDICATORS/NoTricobalt
+					Size = [1, 1]
+				}
+			}
+
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [1, 1]
+				}
+			}
+		]
+	}
+}
+
+MissileStats
+{
+	NameKey = "StatCategories/TricobaltTorpedoLauncher"
+	Stats
+	{
+		DamagePerShot = &~/Components/Emitter/Bullet/Stage2/Components/Hit/HitOperational/HitEffects/0/TotalDamage
+		DamagePerSecond = (&DamagePerShot) * (&ROF)
+		Damage = [&../DamagePerShot, &../DamagePerSecond]
+		DamageArea = &~/Components/Emitter/Bullet/Stage2/Components/Hit/HitOperational/HitEffects/0/Radius
+		ROF = 1 / (&<../fed_torpedo_launcher.rules>/Part/Components/CommonReloadTimerLong/Duration)
+		RangeLimited = [&~/Part/Components/Bullet/Range/BaseValue, &~/Part/Components/Bullet/Range/MaxValue]
+		Arc = deg(&~/Components/Weapon/ValidArc)
+		ShotLaunchSpeed = &~/EmitterBase/Bullet/Speed/BaseValue
+		Acceleration = &~/Components/Emitter/Bullet/Stage2/Components/BoostAcceleration/Acceleration
+		AccelerationDelay = &~/Components/Emitter/Bullet/Components/DeployDeath/Lifetime
+		ShotHP = &~/Components/Emitter/Bullet/Components/Targetable/Health
+		MissileParts = &~/Components/Emitter/ResourcesUsed
+	}
+}
