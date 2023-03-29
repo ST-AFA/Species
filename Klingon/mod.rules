@@ -1,0 +1,43 @@
+ID = "st-afa.101_klingon"
+Name = "ST-AFA - Klingon Empire"
+Version = 0.0.1
+Author = "ST-AFA Mod-Team"
+CompatibleGameVersions = ["0.21.0"]
+ModifiesMultiplayer = true
+Logo = logo.png
+Description = "Adds STAR TREK stuff to the game \n\n"\
+              "<red>WARNING: This mod is a WIP and a development mod. Some things might be unbalanced or broken!</red> \n\n"\
+			  //"- adds Weapons\n"\
+			  //"- adds Engines\n"\
+			  //"- adds Rooms\n"\
+			  //"- adds Energy (WarpCore)\n"\
+			  //"- adds shields\n"\
+			  "Requires STAR TREK - A FINAL ASSAULT CORE MOD"
+StringsFolder = "strings"
+
+
+Actions
+[
+	//******************** FUNCTIONS ********************
+
+
+	//******************** TECHS ********************
+	{
+		Action = AddMany
+		AddTo = "<modes/career/techs.rules>/Techs"
+		ManyToAdd = &<kli_tech.rules>/Techs
+	}
+	
+	//******************** PARTS ********************
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/terran/parts"
+		ManyToAdd = &<parts/klingon.rules>/Parts
+	}
+	//******************** SOUNDS ********************
+
+	//******************** RESOURCES ********************
+
+	//******************** UI ********************
+
+]
