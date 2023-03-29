@@ -75,7 +75,7 @@ Components
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
 
-		HitShield = &HitOperational
+		HitShield {} // penetrate shields
 		HitOperational
 		{
 			Offset = [-0.15, 0]
@@ -83,9 +83,43 @@ Components
 			HitEffects
 			[
 				{
-					Type = Damage
-					Damage = 11250
-					Radius = 4
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = 30000
+					Radius = 15
+					Slices = 3 //1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+					}
+
+					MediaEffectsOnDrainFactor = .0005
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/missile_emp/particles/missile_emp_hit_sizzle.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_lightning.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "../disruptor_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 7500
+					Radius = 3
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
 				}
 				{
 					Type = Impulse;
@@ -119,8 +153,15 @@ Components
 			HitEffects
 			[
 				{
-					Type = Damage
-					Damage = 200
+					Type = ExplosiveDamage
+					TotalDamage = 2500
+					Radius = 6
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
 				}
 				{
 					Type = Impulse;
