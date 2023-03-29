@@ -7,8 +7,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ShieldCoreDesc"
 	Resources
 	[
-		[steel, 40]
-		[coil, 40]
+		[steel, 700]
+		[coil2, 250]
+		[tristeel, 150]
+		[processor, 6]
+		[diamond, 17]
 	]
 	AIValueFactor = 10
 	Size = [4, 4]
