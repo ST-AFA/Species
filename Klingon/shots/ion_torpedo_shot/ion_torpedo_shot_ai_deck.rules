@@ -1,0 +1,21 @@
+ID = "stafa.kli_photon_torpedo_shot_ai_deck"
+Range = { BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+IdealRange
+[
+	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+	{ BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=40; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=60; }
+
+Components : <photon_torpedo_shot.rules>/Components
+{
+	Hit : <photon_torpedo_shot.rules>/Components/Hit
+	{
+		SourceShipLowCollisions = false
+	}
+	Sprite : <photon_torpedo_shot.rules>/Components/Sprite
+	{
+		
+	}
+}
