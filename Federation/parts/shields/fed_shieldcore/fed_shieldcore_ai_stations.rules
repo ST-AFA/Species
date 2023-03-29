@@ -64,7 +64,7 @@ Part : <fed_shieldcore_switch.rules>/Part
 			ResourceType = battery
 			Storage = ThrusterBatteryStorage
 			DefaultPriority = &/PRIORITIES/Thruster_Supply
-			ResupplyThreshold = 1000
+			ResupplyThreshold = 12000
 			OperationalToggle = PowerToggle
 		}
 

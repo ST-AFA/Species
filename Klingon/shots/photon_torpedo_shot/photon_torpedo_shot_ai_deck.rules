@@ -1,4 +1,4 @@
-ID = "stafa.fed_photon_torpedo_shot_ai_deck"
+ID = "stafa.kli_photon_torpedo_shot_ai_deck"
 Range = { BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
 IdealRange
 [
