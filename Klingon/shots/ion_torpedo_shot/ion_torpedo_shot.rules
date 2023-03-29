@@ -1,4 +1,4 @@
-ID = "stafa.kli_photon_torpedo_shot"  // originals by kurim
+ID = "stafa.kli_ion_torpedo_shot"
 Range = { BaseValue=320; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
 IdealRange
 [
@@ -95,14 +95,14 @@ Components
 
 			MediaEffects
 			[
-				&<particles/photon_torpedo_hit.rules>
-				&<particles/photon_torpedo_flash.rules>
-				&<particles/photon_torpedo_sparks.rules>
-				&<particles/photon_torpedo_spikes.rules>
+				&<particles/ion_torpedo_hit.rules>
+				&<particles/ion_torpedo_flash.rules>
+				&<particles/ion_torpedo_sparks.rules>
+				&<particles/ion_torpedo_spikes.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "photon_torpedo_hit.wav"
+					Sound = "ion_torpedo_hit.wav"
 					Volume = .4
 					SpeedVariation = .4
 				}
@@ -130,13 +130,13 @@ Components
 
 			MediaEffects
 			[
-				&<particles/photon_torpedo_hit_struct.rules>
-				&<particles/photon_torpedo_flash.rules>
-				&<particles/photon_torpedo_sparks_struct.rules>
+				&<particles/ion_torpedo_hit_struct.rules>
+				&<particles/ion_torpedo_flash.rules>
+				&<particles/ion_torpedo_sparks_struct.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "photon_torpedo_hit.wav"
+					Sound = "ion_torpedo_hit.wav"
 					Volume = .3
 					SpeedVariation = .4
 				}
@@ -171,7 +171,7 @@ Components
 			{
 				Texture
 				{
-					File = "photon_torpedo_shot.png"
+					File = "ion_torpedo_shot.png"
 					SampleMode = Linear
 					MipLevels = max
 				}
