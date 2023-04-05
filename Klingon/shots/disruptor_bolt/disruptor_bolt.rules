@@ -1,0 +1,201 @@
+ID = "stafa.kli_disruptor_bolt"
+OtherIDs = []
+Range = { BaseValue=260; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=360; }
+IdealRange
+[
+	{ BaseValue=60; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=160; }
+	{ BaseValue=240; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=320; }
+]
+IdealRadius = [5, 50]
+Speed = { BaseValue=200; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=260; }
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.01
+		Density = 0.0001
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 2
+		HasTarget = true
+	}
+
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+
+	//Death
+	//{
+	//	Type = DeathByLifetime
+	//	// Lifetime will be auto-calculated based on range and speed.
+	//}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 450
+		TargetCategory = "bullet"
+	}
+
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue=300; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=600; }
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = { BaseValue=2; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=4; }
+		PenetrationSpeed = &~/Speed
+		FactorEffectsWith = Targetable
+		SourceShipLowCollisions = false
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield
+		{
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 300
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/disruptor_bolt_hit.rules>
+				&<particles/disruptor_bolt_flash.rules>
+				&<particles/disruptor_bolt_sparks.rules>
+				&<particles/disruptor_bolt_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "klingon_pulse_disruptor.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=600; BuffType=CaptainsRoomBuff; BuffMode=Multiply; MaxValue=1200; }
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/disruptor_bolt_hit_struct.rules>
+				&<particles/disruptor_bolt_flash.rules>
+				&<particles/disruptor_bolt_sparks_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "klingon_pulse_disruptor.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "disruptor_bolt.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [2, 2]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 4]
+			VertexColor = [255, 147, 15]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}
