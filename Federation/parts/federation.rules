@@ -6,6 +6,7 @@ Parts
 	//&<weapons/fed_heavy_dual_phaser_cannon/fed_heavy_dual_phaser_cannon.rules>/Part
 	&<weapons/fed_phaser_point_defense/fed_phaser_point_defense.rules>/Part
 	&<weapons/fed_torpedolauncher/fed_torpedo_launcher.rules>/Part
+	&<weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part
 	&<weapons/fed_phaser_cannon_deck/fed_phaser_cannon_deck.rules>/Part
 	&<weapons/fed_phaserbank_controller/fed_phaserbank_controller.rules>/Part
 	&<weapons/fed_phaserbank/fed_phaserbank.rules>/Part
