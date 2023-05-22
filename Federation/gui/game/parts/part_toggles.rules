@@ -54,6 +54,43 @@ PartToggles
 		]
 	}
 	{
+		ToggleID = "torpedo_type_deck"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Photon Torpedo.
+			{
+				ChoiceID = "torpedo_type_photon_deck"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Photon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "photon_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Quantum Torpedo.
+			{
+				ChoiceID = "torpedo_type_quantum_deck"
+				ButtonToolTipKey = "PartToggles/TorpedoType_Quantum"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "quantum_torpedo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	{
 		ToggleID = "torpedo_type_ai"
 		Style = Popout
 		ShowInEditor = true

@@ -209,4 +209,15 @@ Techs
 		Cost = 15000
 		Prerequisites = [stafa.fed_warpcore_large]
 	}
+	{
+		Name = fed_decktorpedolauncher
+		ID = stafa.fed_torpedolauncher_deck_2x4
+		NameKey = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/NameKey
+		DescriptionKey = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/DescriptionKey
+		Icon = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/EditorIcon
+		EditorGroups = &<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/EditorGroups
+		PartsUnlocked = [&<parts/weapons/fed_torpedolauncher/fed_torpedo_launcher_deck.rules>/Part/ID]
+		Cost = 30000
+		Prerequisites = [stafa.fed_torpedolauncher_2x4]
+	}
 ]
