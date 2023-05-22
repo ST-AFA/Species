@@ -19,7 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
-	TypeCategories = [weapon, uses_torpedos, is_crewed]
+	TypeCategories = [weapon, uses_torpedos_deck, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff]
 	ProhibitAbove = 0
 	AllowedDoorLocations
