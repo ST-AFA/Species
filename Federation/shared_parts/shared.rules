@@ -1,0 +1,13 @@
+Parts
+[
+	//********** Shared Parts ********
+	// Rooms Crew Based on Kurimes Crewmod
+	&<rooms/crew_3x1/crew_3x1.rules>/Part
+	&<rooms/crew_3x2/crew_3x2.rules>/Part
+	&<rooms/crew_3x3/crew_3x3.rules>/Part
+	&<rooms/crew_4x3/crew_4x3.rules>/Part
+	&<rooms/crew_4x4/crew_4x4.rules>/Part
+	//********** Factories ********
+	&<factories/factory_antimatter/factory_antimatter.rules>/Part
+	&<factories/factory_torpedo/factory_torpedo_parts.rules>/Part
+]

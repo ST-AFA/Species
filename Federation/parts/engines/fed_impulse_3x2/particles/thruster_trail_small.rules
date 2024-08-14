@@ -1,0 +1,166 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = SetRandom
+			DataOut = rotation
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+			Name = "Initial rotation."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 0.5
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity."
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Angle
+			AIn = rotation
+			BIn = rot_vel
+			ResultOut = rotation
+			Operator = AddDt
+			Name = "Apply rot velocity."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ColorRamp
+			LerpIn = life
+			ColorOut = color
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+			]
+			Name = "Color Ramp"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+	]
+	Renderer
+	{
+		Type = StandardQuadRenderer
+		LocationIn = location
+		ScaleIn = scale
+		Scale2In
+		RotationIn = rotation
+		ColorIn = color
+		UvRectIn
+		BaseSize
+		{
+			X = 5
+			Y = 5
+		}
+		Offset
+		{
+			X = 0
+			Y = 0
+		}
+		Name = ""
+	}
+	Material
+	{
+		Texture
+		{
+			File = "./Data/common_effects/particles/blob.png"
+			MipLevels = max
+			SampleMode = Linear
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = InverseDestAlpha
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+		Color
+		{
+			Rf = 1
+			Gf = 0
+			Bf = 0
+			Af = 0.60784316
+		}
+	}
+	DeleteMode = Fast
+	EnableMultithreading = false
+	InitCapacity = 5000
+}
+EmitterDef
+{
+	EmitPerSecond = 2
+	EmitPerOneShot = 0
+	PreInitializers
+	[
+		{
+			Type = ScaleFromIntensity
+			ScaleOut = scale
+			ScaleFactor = 1
+			IntensityExponent = 1
+			Name = "Scale from intensity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = Upper1
+UseRealTime = false
+PenetratingBucket
+MinIntensity = 0.05
+IsFancy = true
+IsSimple = false
+Sharing = None
+UnsharedRenderInWorldSpace = false
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 10
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.4028235E+38
+ScaleEmissionWithIntensity = false
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = false
+Delay = 0
+IgnoreIntensity = false

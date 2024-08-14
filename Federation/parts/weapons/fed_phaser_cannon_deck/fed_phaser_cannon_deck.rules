@@ -9,10 +9,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 72]
 		[coil2, 30]
-		[coil2, 4]
+//		[coil2, 4]
 	]
 	TypeCategories = [weapon, uses_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, AntimatterPower]
 	Size = [2, 2]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true

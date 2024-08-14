@@ -1,0 +1,577 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/FactoryTorpedoPart"
+	IconNameKey = "Parts/FactoryTorpedoPartIcon"
+	ID = stafa.factory_torpedo_parts // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/FactoryTorpedoPartDesc"
+	Resources
+	[
+		[steel, 48]
+		[coil2, 118]
+		[tristeel, 67]
+	]
+	Size = [2, 3]
+	SelectionPriority = 1
+	MaxHealth = 6000
+	TypeCategories = [provides_torpedo_part, uses_antimatter, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [42.66, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		AntimatterStorage
+		{
+			Type = ResourceStorage
+			ResourceType = antimatter
+			MaxResources = 1
+			DelayBeforeReadyToUse = 0.7
+			UITileRect = [.5 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = true
+		}
+		AntimatterConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = antimatter
+			Storage = AntimatterStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		AntimatterSplitter
+		{
+			Type = InlineResourceConverter
+			ResourceType = antimatter
+			FromStorage = AntimatterStorage
+			FromQuantity = 1
+			ToQuantity = 140
+		}
+
+		TorpedoPartStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = torpedo_part
+			GridRect = [0, 2, 2, 1]
+			Layer = "doodads_low"
+			SpriteInset = [8/64, 3/64, 8/64, 12/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			ToggleOnResources = &../ResourceConverter/From/0/Quantity
+			ToggleOffResources = (&ToggleOnResources) - 1
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 15000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 6000
+			OperationalToggle = PowerToggle
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = AntimatterSplitter
+			        Quantity = 1
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 125
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = TorpedoPartStorage
+			ToQuantity = 1
+			Interval = { BaseValue=.3; BuffType=Factory; BuffMode=Divide; }
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1, 1.5]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./Data/ships/terran/factory_ammo/bullet_create.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doors"
+				Offset = [0, -0.25]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"torpedo_part1.png"
+							"torpedo_part2.png"
+							"torpedo_part3.png"
+							"torpedo_part4.png"
+							"torpedo_part5.png"
+							"torpedo_part6.png"
+							"torpedo_part7.png"
+							"torpedo_part8.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part13.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"torpedo_part1_33.png"
+							"torpedo_part2_33.png"
+							"torpedo_part3_33.png"
+							"torpedo_part4_33.png"
+							"torpedo_part5_33.png"
+							"torpedo_part6_33.png"
+							"torpedo_part7_33.png"
+							"torpedo_part8.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part13.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"torpedo_part1_66.png"
+							"torpedo_part2_66.png"
+							"torpedo_part3_66.png"
+							"torpedo_part4_66.png"
+							"torpedo_part5_66.png"
+							"torpedo_part6_66.png"
+							"torpedo_part7_66.png"
+							"torpedo_part8.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part9.png"
+							"torpedo_part10.png"
+							"torpedo_part11.png"
+							"torpedo_part12.png"
+							"torpedo_part13.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+						AnimationStartTime = WhenSpawned
+						ClampAnimation = true
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/lights.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1_33.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "./Data/ships/terran/factory_diamond/roof1_66.png"
+						NormalsFile = "./Data/ships/terran/factory_diamond/roof_normals1_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			// OperationalRoofDoodad
+			// {
+				// Layer = "roof_doodads"
+				// Offset = [0, 1]
+				// DamageLevels
+				// [
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows.png"
+						// Size = [2, 1]
+					// }
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows_33.png"
+						// Size = [2, 1]
+					// }
+					// {
+						// File = "./Data/ships/terran/factory_diamond/roof_glows_66.png"
+						// Size = [2, 1]
+					// }
+				// ]
+			// }
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -29/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5,0,0]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "./Data/ships/terran/factory_diamond/batteries1.png"
+					Size = [1, 1]
+					Offset = [-.5, 0]
+				}
+				{
+					File = "./Data/ships/terran/factory_diamond/batteries2.png"
+					Size = [2, 1]
+				}
+			]
+		}
+
+		AntimatterSprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1]
+			ResourceStorage = AntimatterStorage
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"antimatter0-1.png"
+						"antimatter0-2.png"
+						"antimatter0-3.png"
+						"antimatter0-4.png"
+						"antimatter0-5.png"
+						"antimatter0-6.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.1
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"antimatter20-1.png"
+						"antimatter20-2.png"
+						"antimatter20-3.png"
+						"antimatter20-4.png"
+						"antimatter20-5.png"
+						"antimatter20-6.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.1
+					ClampAnimation = true
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// No antimatter.
+				{
+					Toggle = AntimatterStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./Data/ships/terran/factory_diamond/blueprints.png"
+			Size = [2, 3]
+		}
+	}
+
+	Stats
+	{
+		TorpedoPartProduction = Infinity //(&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		TorpedoPartCapacity = (&~/Part/Components/TorpedoPartStorage/GridRect/2) * (&~/Part/Components/TorpedoPartStorage/GridRect/3) * (&<../../../resources/torpedo_part/torpedo_part.rules>/MaxStackSize)
+		AntimatterCapacity = &~/Part/Components/AntimatterStorage/MaxResources
+		AntimatterPerTorpedoPart = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
+		AntimatterPerSecond = Infinity //(&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		TorpedoPartAntimatterUsage = [&../AntimatterPerTorpedoPart, &../AntimatterPerSecond]
+		PowerPerTorpedoPart = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = Infinity //(&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		DiamondPowerUsage = [&../PowerPerTorpedoPart, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = 2 //&PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

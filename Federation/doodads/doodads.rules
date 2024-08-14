@@ -1,0 +1,7 @@
+Doodads
+[
+	// Resources.
+	&<../resources/antimatter/doodad_resource_antimatter.rules>
+	&<../resources/torpedo_part/doodad_resource_torpedo_part.rules>
+	&<../resources/dilithium/doodad_resource_dilithium.rules>
+]

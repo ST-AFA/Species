@@ -21,7 +21,7 @@ Part : <fed_shieldcore_switch.rules>/Part
 	{
 		Texture
 		{
-			File = "icon_ai.png"
+			File = "icon.png"
 			SampleMode = Linear
 		}
 		Size = [64, 64]
@@ -64,7 +64,7 @@ Part : <fed_shieldcore_switch.rules>/Part
 			ResourceType = battery
 			Storage = ThrusterBatteryStorage
 			DefaultPriority = &/PRIORITIES/Thruster_Supply
-			ResupplyThreshold = 12000
+			ResupplyThreshold = 1000
 			OperationalToggle = PowerToggle
 		}
 

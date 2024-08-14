@@ -1,0 +1,62 @@
+Techs
+[
+	// Tier 1 Blueprints
+	{
+		Name = crewquarters3x1
+		ID = stafa.3x1crewquarters
+		NameKey = &<shared_parts/rooms/crew_3x1/crew_3x1.rules>/Part/NameKey
+		DescriptionKey = &<shared_parts/rooms/crew_3x1/crew_3x1.rules>/Part/DescriptionKey
+		Icon = &<shared_parts/rooms/crew_3x1/crew_3x1.rules>/Part/EditorIcon
+		EditorGroup = &<shared_parts/rooms/crew_3x1/crew_3x1.rules>/Part/EditorGroup
+		PartsUnlocked = [&<shared_parts/rooms/crew_3x1/crew_3x1.rules>/Part/ID]
+		Cost = 1500
+	}
+	{
+		Name = crewquarters3x2
+		ID = stafa.3x2crewquarters
+		NameKey = &<shared_parts/rooms/crew_3x2/crew_3x2.rules>/Part/NameKey
+		DescriptionKey = &<shared_parts/rooms/crew_3x2/crew_3x2.rules>/Part/DescriptionKey
+		Icon = &<shared_parts/rooms/crew_3x2/crew_3x2.rules>/Part/EditorIcon
+		EditorGroup = &<shared_parts/rooms/crew_3x2/crew_3x2.rules>/Part/EditorGroup
+		PartsUnlocked = [&<shared_parts/rooms/crew_3x2/crew_3x2.rules>/Part/ID]
+		Cost = 3000
+		Prerequisites = [stafa.3x1crewquarters]
+	}
+	// Tier 2 Blueprints
+	{
+		Name = crewquarters3x3
+		ID = stafa.3x3crewquarters
+		NameKey = &<shared_parts/rooms/crew_3x3/crew_3x3.rules>/Part/NameKey
+		DescriptionKey = &<shared_parts/rooms/crew_3x3/crew_3x3.rules>/Part/DescriptionKey
+		Icon = &<shared_parts/rooms/crew_3x3/crew_3x3.rules>/Part/EditorIcon
+		EditorGroup = &<shared_parts/rooms/crew_3x3/crew_3x3.rules>/Part/EditorGroup
+		PartsUnlocked = [&<shared_parts/rooms/crew_3x3/crew_3x3.rules>/Part/ID]
+		Cost = 6000
+		Prerequisites = [stafa.3x2crewquarters,cosmoteer.control_room_med]
+	}
+
+	{
+		Name = crewquarters4x3
+		ID = stafa.4x3crewquarters
+		NameKey = &<shared_parts/rooms/crew_4x3/crew_4x3.rules>/Part/NameKey
+		DescriptionKey = &<shared_parts/rooms/crew_4x3/crew_4x3.rules>/Part/DescriptionKey
+		Icon = &<shared_parts/rooms/crew_4x3/crew_4x3.rules>/Part/EditorIcon
+		EditorGroup = &<shared_parts/rooms/crew_4x3/crew_4x3.rules>/Part/EditorGroup
+		PartsUnlocked = [&<shared_parts/rooms/crew_4x3/crew_4x3.rules>/Part/ID]
+		Cost = 9000
+		Prerequisites = [stafa.3x3crewquarters, cosmoteer.control_room_large]
+	}
+
+	// Tier 3 Blueprints
+	{
+		Name = crewquarters4x4
+		ID = stafa.4x4crewquarters
+		NameKey = &<shared_parts/rooms/crew_4x4/crew_4x4.rules>/Part/NameKey
+		DescriptionKey = &<shared_parts/rooms/crew_4x4/crew_4x4.rules>/Part/DescriptionKey
+		Icon = &<shared_parts/rooms/crew_4x4/crew_4x4.rules>/Part/EditorIcon
+		EditorGroup = &<shared_parts/rooms/crew_4x4/crew_4x4.rules>/Part/EditorGroup
+		PartsUnlocked = [&<shared_parts/rooms/crew_4x4/crew_4x4.rules>/Part/ID]
+		Cost = 12000
+		Prerequisites = [stafa.4x3crewquarters, cosmoteer.control_room_large]
+	}
+]

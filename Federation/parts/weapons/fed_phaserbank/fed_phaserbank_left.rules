@@ -1,0 +1,19 @@
+Part : <fed_phaserbank.rules>/Part
+{
+	ID = "stafa.phaserbank_floor_left"
+	Components : <fed_phaserbank.rules>/Part/Components
+	{
+		Turret : <fed_phaserbank.rules>/Part/Components/Turret
+		{
+			Rotation = 180d
+			FiringArc = 180d
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints_left.png"
+			Size = [1, 6]
+		}
+	}
+}

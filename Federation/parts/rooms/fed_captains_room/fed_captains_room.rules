@@ -102,7 +102,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BuffProvider1
 		{
 			Type = GridBuffProvider
-			BuffType = CaptainsRoomBuff
+			BuffType = AntimatterPower
 			BuffAmount = 100%
 			GridDistance = 100
 			OperationalToggle = PowerToggle

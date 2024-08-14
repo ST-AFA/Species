@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Phaser_Pointdefense"
 	IconNameKey = "Parts/Phaser_Pointdefense_Icon"
 	ID = "stafa.phaser_point_defense"
-	OtherIDs = [phaser_point_defense, nexusmods.BeamGun01_1x2]
+	OtherIDs = [phaser_point_defense]
 	EditorGroups = ["Starfleet"]
 	DescriptionKey = "Parts/Phaser_Pointdefense_Desc"
 	Resources
@@ -14,7 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Cost = 5000
 	AIValue = 5
-	TypeCategories = [weapon, uses_power, is_crewed]
+	TypeCategories = [weapon, uses_power, is_crewed, turret]
 	Size = [1, 3]
 	PhysicalRect = [0, 1, 1, 2]
 	SaveRect = &PhysicalRect
@@ -23,7 +23,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000
 	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
-	ReceivableBuffs : ^/0/ReceivableBuffs [AntimatterPower, CaptainsRoomBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [CaptainsRoomBuff, AntimatterPower]
 	AllowedDoorLocations
 	[
 		[-1, 2]
@@ -268,15 +268,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 
-		Turret
+	    Turret
 		{
 			Type = TurretWeapon
 			Location = [.5, 0.9]//0.46]
 			Rotation = -90d
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			EstimateFirepowerToggle = AttackToggle
-
+//			EstimateFirepowerToggle = AttackToggle
 			FireInterval = 2.0
 //			SpawnLoc = [0, 0]
 			FiringArc = 190d//180d
@@ -360,7 +359,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		TurretCollider
 		{
 			Type = CircleCollider
-			ChainedTo = Turret
+//			ChainedTo = Turret
 			Radius = .35
 			Density = .5
 		}
@@ -498,7 +497,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				ShotDamagePerShot = (&~/Part/Components/BeamEmitter/HitNothing/HitEffects/0/TotalDamage) * ((&~/Part/Components/BeamEmitter/Duration)/(&~/Part/Components/BeamEmitter/HitInterval))
 				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
 				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
-
+				
 				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
 //				DamagePerShot = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/HitEffects/0/Damage
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval

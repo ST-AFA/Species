@@ -1,0 +1,183 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CrewQuarters3x1"
+	IconNameKey = "Parts/CrewQuarters3x1Icon"
+	JobsNameKey = "JobNames/General"
+	JobsIcon = &<./Data/gui/game/crew/crew_gui.rules>/ToolIcon
+	ID = "stafa.3x1crewquarters"
+	OtherIDs = [3x1crewquarters, kurim.3x1crewquarters]
+	EditorGroup = "Crew"
+	DescriptionKey = "Parts/CrewQuarters3x1Desc"
+	Resources
+	[
+		[steel, 36]
+	]
+	Size = [3, 1]
+	SelectionTypeID = "quarters"
+	MaxHealth = 3000
+	TypeCategories = [provides_crew]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations
+	[
+		//middle of each wall
+		//[0,-1]	//top left 
+		[1, -1]		//top middle
+		//[2,-1]	//top right
+
+		//[-1,0]	//left
+		
+		//[3,0]		//right
+
+		//[0,1]		//bottom left
+		[1, 1]		//bottom middle
+		//[2,1]		//bottom right
+
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 31.33]
+	}
+	Components : ^/0/Components
+	{
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 4
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 0.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 1]
+						AnimationInterval = 0.2
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 0.5]
+			GetColorFrom = CrewSource
+			Floor
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "sheets.png"
+						Size = [3, 1]
+					}
+					{
+						File = "sheets_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "sheets_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [1, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 1]
+		}
+	}
+}
